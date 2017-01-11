@@ -1,0 +1,63 @@
+{
+	"id": "cb187fe9-d0d8-9f3e-9e5c-cc4dd9f3d715",
+	"name": "Automation",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "947493ec-9a24-6bd7-ff4a-3eed4b1d8e5c",
+			"name": "SingleReminder",
+			"description": "",
+			"order": [
+				"ccf326c5-e6f4-be5d-07ef-4b0a246c61fb",
+				"b11467b2-abe3-6171-5ad5-cafd1c46b654"
+			],
+			"owner": "1378843",
+			"collectionId": "4355d6d7-b3ba-3ab4-9fd3-c9df0baef9be"
+		}
+	],
+	"timestamp": 1483999919111,
+	"owner": "1378843",
+	"public": false,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "b11467b2-abe3-6171-5ad5-cafd1c46b654",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: 1.19.0\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
+			"url": "{{home_env}}/v2/Reminders/RecurringReminders",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[data.id + \" Request Status\"] = responseCode.code === data.expectedresult;\n\nif(responseCode.code === 201){\n    tests[\"Location-Type is present into header\"] = responseHeaders.hasOwnProperty(\"Location\");\n}\n\nif(responseBody!==null && responseCode.code !== 201){\nvar jsonData = JSON.parse(responseBody);\n    if(data.validateBody === true){\n        tests[data.id + \" Expected: \" + data.bodycode + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycode;\n        tests[data.id + \" Expected: \" + data.messageerror + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerror;\n    }\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1484178197252,
+			"name": "Create recurring reminder ",
+			"description": "",
+			"collectionId": "cb187fe9-d0d8-9f3e-9e5c-cc4dd9f3d715",
+			"rawModeData": "{\n  \t\"IsClinicianCreated\":  true,\n  \t\"PatientId\": {{patientid}},\n  \t\"Name\": \"{{name}}\",\n  \t\"Description\": \"{{description}}\",\n  \t\"ReminderTypeId\": {{category}},\n  \t\"IsImportant\": false,\n  \t\"TimeZoneName\": \"{{timezone}}\",\n  \t\"RemindMeMinutes\": [{{remindMeMinutes}}],\n\t\"RecurrenceType\":\"{{recurrenceType}}\",\n\t\"Weekdays\": \"{{weekdays}}\",\n    \"MonthlyDeliveryDay\": {{monthlydeliveryday}},\n\t\"startDate\": \"{{startDate}}\",\n\t\"endDate\": \"{{endDate}}\",\n    \"AlertTimes\": [\"09:00\",\"12:00\"]\n}\n"
+		},
+		{
+			"id": "ccf326c5-e6f4-be5d-07ef-4b0a246c61fb",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: 1.19.0\nX-os_version: 8.3.3\nConnection: Keep-Alive\n",
+			"url": "{{home_env}}Accounts/Login",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.Data.TokenDetails.AccessToken);\r\n\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1484175851969,
+			"name": "Login Home Environment",
+			"description": "",
+			"collectionId": "cb187fe9-d0d8-9f3e-9e5c-cc4dd9f3d715",
+			"rawModeData": "{\n\t\"UserName\":\"{{username}}\",\n\t\"Password\": \"{{password}}\",\n\t\"DeviceId\":\"12345\",\n\t\"IsAmPmUsed\":true,\n\t\"IetfTag\":\"en-US\",\n\t\"TimeZoneOffset\":\"-06:00\"\n}"
+		}
+	]
+}

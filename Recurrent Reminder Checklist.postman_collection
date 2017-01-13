@@ -1,25 +1,24 @@
 {
 	"id": "cb187fe9-d0d8-9f3e-9e5c-cc4dd9f3d715",
-	"name": "Automation",
+	"name": "Recurrent Reminder Checklist",
 	"description": "",
 	"order": [],
 	"folders": [
 		{
 			"id": "947493ec-9a24-6bd7-ff4a-3eed4b1d8e5c",
-			"name": "SingleReminder",
+			"name": "RecurrentReminder",
 			"description": "",
 			"order": [
 				"ccf326c5-e6f4-be5d-07ef-4b0a246c61fb",
 				"b11467b2-abe3-6171-5ad5-cafd1c46b654"
 			],
 			"owner": "1378843",
-			"collectionId": "4355d6d7-b3ba-3ab4-9fd3-c9df0baef9be"
+			"collectionId": "cb187fe9-d0d8-9f3e-9e5c-cc4dd9f3d715"
 		}
 	],
 	"timestamp": 1483999919111,
 	"owner": "1378843",
 	"public": false,
-	"hasRequests": true,
 	"requests": [
 		{
 			"id": "b11467b2-abe3-6171-5ad5-cafd1c46b654",

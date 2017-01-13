@@ -160,6 +160,42 @@
 	"expectedresult": 201,
 	"messageerror": "",
 	"bodycode": 201
+},{
+	"id": "PST time zone",
+	"name": "Positive flow - When time zone is IST",
+	"patientid": 3,
+	"duedates": "2022-12-19T05:41:00Z",
+	"description": "tester123",
+	"category": 1,
+	"timezone": "IST",
+	"remindMeMinutes": 30,
+	"recurrenceType": "D",
+	"weekdays": "W",
+	"monthlydeliveryday": 2,
+	"startDate": "2022-2-2T00:00:00Z",
+	"endDate": "2022-03-29T00:00:00Z",
+	"alertTimes": "9:00",
+	"expectedresult": 201,
+	"messageerror": "",
+	"bodycode": 201
+},{
+	"id": "PST time zone",
+	"name": "Positive flow - When time zone is EST",
+	"patientid": 3,
+	"duedates": "2022-12-19T05:41:00Z",
+	"description": "tester123",
+	"category": 1,
+	"timezone": "IST",
+	"remindMeMinutes": 30,
+	"recurrenceType": "D",
+	"weekdays": "W",
+	"monthlydeliveryday": 2,
+	"startDate": "2022-2-2T00:00:00Z",
+	"endDate": "2022-03-29T00:00:00Z",
+	"alertTimes": "9:00",
+	"expectedresult": 201,
+	"messageerror": "",
+	"bodycode": 201
 }, {
 	"id": "Remind me (1)",
 	"name": "Positive flow - When the  RemindMeMinutes is 30",
@@ -341,24 +377,6 @@
 	"bodycode": 4226,
 	"validateBody": true
 },{
-	"id": "Past start date",
-	"name": "Negative flow - Start date in future",
-	"patientid": 3,
-	"description": "tester123",
-	"category": 1,
-	"timezone": "EST",
-	"remindMeMinutes": 30,
-	"recurrenceType": "D",
-	"weekdays": "W",
-	"monthlydeliveryday": 2,
-	"startDate": "2017-1-1T00:00:00Z",
-	"endDate": "2018-2-1T00:00:00Z",
-	"alertTimes": "9:00",
-	"expectedresult": 400,
-	"messageerror": "Start date must be in the future",
-	"bodycode": 4310,
-	"validateBody": true
-},{
 	"id": "Invalid weekday",
 	"name": "Negative flow - Invalid Weekday Type",
 	"patientid": 3,
@@ -373,8 +391,8 @@
 	"endDate": "2022-5-1T00:00:00Z",
 	"alertTimes": "9:00",
 	"expectedresult": 400,
-	"messageerror": "Invalid Weekday Type",
-	"bodycode": 4311,
+	"messageerror": "Invalid or missing parameters: Weekdays",
+	"bodycode": 4000,
 	"validateBody": true
 },{
 	"id": "Invalid monthly day",
@@ -393,24 +411,6 @@
 	"expectedresult": 400,
 	"messageerror": "The Monthly Delivery Day was an invalid value",
 	"bodycode": 4129,
-	"validateBody": true
-},{
-	"id": "Past due date",
-	"name": "Negative flow - Due date past",
-	"patientid": 3,
-	"description": "tester123",
-	"category": 7,
-	"timezone": "EST",
-	"remindMeMinutes": 30,
-	"recurrenceType": "D",
-	"weekdays": "W",
-	"monthlydeliveryday": 40,
-	"startDate": "2017-1-1T00:00:00Z",
-	"endDate": "2018-5-1T00:00:00Z",
-	"alertTimes": "9:00",
-	"expectedresult": 400,
-	"messageerror": "The due date you have chosen is in the past. Please select a valid due date",
-	"bodycode": 4112,
 	"validateBody": true
 },{
 	"id": "Invalid reminder type",
@@ -463,8 +463,8 @@
 	"endDate": "2022-3-1T00:00:00Z",
 	"alertTimes": "28:00",
 	"expectedresult": 400,
-	"messageerror": "Invalid Weekday Type",
-	"bodycode": 4311,
+	"messageerror": "Invalid or missing parameters: Weekdays",
+	"bodycode": 4000,
 	"validateBody": true
 },{
 	"id": "Incorrect time span",
@@ -517,34 +517,17 @@
 	"endDate": "2022-03-29T00:00:00Z",
 	"alertTimes": "9:00",
 	"expectedresult": 400,
-	"messageerror": "Reminder Type is invalid",
+	"messageerror": "Invalid or missing parameters: Weekdays",
 	"bodycode": 4000,
 	"validateBody": true
 },{
-	"id": "Bug 3099",
-	"name": "Negative flow - When time zone is UTC",
+	"id": "Bug 3062",
+	"name": "Negative flow - Incorrect time zone",
 	"patientid": 3,
 	"duedates": "2022-12-19T05:41:00Z",
 	"description": "tester123",
 	"category": 1,
-	"timezone": "UTC",
-	"remindMeMinutes": 30,
-	"recurrenceType": "D",
-	"weekdays": "W",
-	"monthlydeliveryday": 2,
-	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z",
-	"alertTimes": "9:00",
-	"expectedresult": 400,
-	"validateBody": false
-},{
-	"id": "Bug 3064",
-	"name": "Negative flow - Appointment mult times",
-	"patientid": 3,
-	"duedates": "2022-12-19T05:41:00Z",
-	"description": "tester123",
-	"category": 1,
-	"timezone": "EST",
+	"timezone": "ZZZ",
 	"remindMeMinutes": 30,
 	"recurrenceType": "D",
 	"weekdays": "W",
@@ -552,7 +535,7 @@
 	"startDate": "2022-2-2T00:00:00Z",
 	"endDate": "2022-03-29T00:00:00Z",
 	"alertTimes": ["8:00","9:00","12:00"],
-	"expectedresult": 400,
+	"expectedresult": 500,
 	"validateBody": false
 }
 ]

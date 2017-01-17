@@ -10,7 +10,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Meds reminder",
 	"name": "Positive flow - When category is Meds",
@@ -23,7 +24,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Labs reminder",
 	"name": "Positive flow - When category is Labs",
@@ -36,7 +38,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Nutrition reminder",
 	"name": "Positive flow - When category is Nutrition",
@@ -49,7 +52,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Self care reminder",
 	"name": "Positive flow - When category is Self-Care",
@@ -62,7 +66,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "EST time zone",
 	"name": "Positive flow - When time zone is EST",
@@ -75,7 +80,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "CST time zone",
 	"name": "Positive flow - When time zone is CST",
@@ -88,7 +94,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "MST time zone",
 	"name": "Positive flow - When time zone is MST",
@@ -101,7 +108,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "PST time zone",
 	"name": "Positive flow - When time zone is PST",
@@ -114,7 +122,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 },{
 	"id": "IST time zone",
 	"name": "Positive flow - When time zone is IST",
@@ -127,7 +136,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Remind me (1)",
 	"name": "Positive flow - When the  RemindMeMinutes is 30",
@@ -140,7 +150,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Remind me (2)",
 	"name": "Positive flow - When the RemindMeMinutes is  60",
@@ -153,7 +164,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Remind me (3)",
 	"name": "Positive flow - When the RemindMeMinutes is  120",
@@ -166,7 +178,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Remind me (4)",
 	"name": "Positive flow - When the RemindMeMinutes is 1440",
@@ -179,7 +192,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Remind me (5)",
 	"name": "Positive flow - When RemindMeMinutes is  2880",
@@ -191,7 +205,8 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
 }, {
 	"id": "Remind me (6)",
 	"name": "Positive flow - When the RemindMeMinutes is  4320",
@@ -204,6 +219,25 @@
 	"weekdays": "W",
 	"monthlydeliveryday": 2,
 	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z"
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : true
+}, {
+	"id": "Non existing reminder",
+	"name": "Negative flow - When the reminder does not exist",
+	"patientid": 3,
+	"description": "tester123",
+	"category": 1,
+	"timezone": "EST",
+	"remindMeMinutes": 4320,
+	"recurrenceType": "D",
+	"weekdays": "W",
+	"monthlydeliveryday": 2,
+	"startDate": "2022-2-2T00:00:00Z",
+	"endDate": "2022-03-29T00:00:00Z",
+	"expected" : false,
+	"messageerrorSingle": "Reminder not found",
+	"bodycodeSingle": 4205,
+	"messageerrorRec": "Reminder series not found",
+	"bodycodeRec": 4224
 }
 ]

@@ -1,7 +1,6 @@
 [{
 	"id": "Appointment reminder",
 	"name": "QAPositive flow - When category is Appointment",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
@@ -15,7 +14,6 @@
 }, {
 	"id": "Meds reminder",
 	"name": "Positive flow - When category is Meds",
-	"patientid": 3,
 	"description": "tester124",
 	"category": 2,
 	"timezone": "EST",
@@ -29,7 +27,6 @@
 }, {
 	"id": "Labs reminder",
 	"name": "Positive flow - When category is Labs",
-	"patientid": 3,
 	"description": "tester125",
 	"category": 3,
 	"timezone": "EST",
@@ -43,7 +40,6 @@
 }, {
 	"id": "Nutrition reminder",
 	"name": "Positive flow - When category is Nutrition",
-	"patientid": 3,
 	"description": "tester126",
 	"category": 4,
 	"timezone": "EST",
@@ -57,7 +53,6 @@
 }, {
 	"id": "Self care reminder",
 	"name": "Positive flow - When category is Self-Care",
-	"patientid": 3,
 	"description": "tester127",
 	"category": 6,
 	"timezone": "EST",
@@ -71,7 +66,6 @@
 }, {
 	"id": "EST time zone",
 	"name": "Positive flow - When time zone is EST",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
@@ -85,7 +79,6 @@
 }, {
 	"id": "CST time zone",
 	"name": "Positive flow - When time zone is CST",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "CST",
@@ -99,7 +92,6 @@
 }, {
 	"id": "MST time zone",
 	"name": "Positive flow - When time zone is MST",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "MST",
@@ -113,7 +105,6 @@
 }, {
 	"id": "PST time zone",
 	"name": "Positive flow - When time zone is PST",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "PST",
@@ -127,7 +118,6 @@
 },{
 	"id": "IST time zone",
 	"name": "Positive flow - When time zone is IST",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "IST",
@@ -141,7 +131,6 @@
 }, {
 	"id": "Remind me (1)",
 	"name": "Positive flow - When the  RemindMeMinutes is 30",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
@@ -155,7 +144,6 @@
 }, {
 	"id": "Remind me (2)",
 	"name": "Positive flow - When the RemindMeMinutes is  60",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
@@ -169,7 +157,6 @@
 }, {
 	"id": "Remind me (3)",
 	"name": "Positive flow - When the RemindMeMinutes is  120",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
@@ -183,7 +170,6 @@
 }, {
 	"id": "Remind me (4)",
 	"name": "Positive flow - When the RemindMeMinutes is 1440",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
@@ -197,7 +183,7 @@
 }, {
 	"id": "Remind me (5)",
 	"name": "Positive flow - When RemindMeMinutes is  2880",
-	"patientid": 3,	"description": "tester123",
+	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
 	"remindMeMinutes": 2880,
@@ -210,7 +196,6 @@
 }, {
 	"id": "Remind me (6)",
 	"name": "Positive flow - When the RemindMeMinutes is  4320",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",
@@ -224,7 +209,6 @@
 }, {
 	"id": "Non existing reminder",
 	"name": "Negative flow - When the reminder does not exist",
-	"patientid": 3,
 	"description": "tester123",
 	"category": 1,
 	"timezone": "EST",

@@ -6,7 +6,7 @@
 	"folders": [
 		{
 			"id": "67ce9880-f59f-af6d-a677-c0ac63e3338d",
-			"name": "Get Single/Recurring Reminders Checklist",
+			"name": "GET Single/Recurring Reminders Checklist",
 			"description": "",
 			"order": [
 				"07329ca7-dc9f-ff41-5a8e-83912cc1e7e3",
@@ -16,18 +16,18 @@
 				"7fd819de-6afd-e7e1-892e-8dadfededa0f"
 			],
 			"owner": "1378843",
-			"collectionId": "adb875a2-9ea6-aba6-04a1-89da4abf8396"
+			"collectionId": "49652c13-61bc-0b6c-8ce1-084dad1a53ff"
 		},
 		{
 			"id": "b84c6b4e-cd38-bf28-82e2-d6d36a966222",
-			"name": "RecurrentReminder",
+			"name": "POST RecurrentReminder Checklist",
 			"description": "",
 			"order": [
 				"1ea1287d-1282-8f62-725c-e74b0930e8d4",
 				"dcdb4e04-cf45-7f03-5aff-670d1b592e67"
 			],
 			"owner": "1378843",
-			"collectionId": "cb187fe9-d0d8-9f3e-9e5c-cc4dd9f3d715"
+			"collectionId": "49652c13-61bc-0b6c-8ce1-084dad1a53ff"
 		}
 	],
 	"timestamp": 1483999919111,
@@ -44,15 +44,14 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.Data.TokenDetails.AccessToken);\r\n\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.Data.TokenDetails.AccessToken);\r\n\r\npostman.setEnvironmentVariable(\"patientid\", jsonData.Data.PatientId);\r\n\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1484344473001,
+			"time": 1484860237997,
 			"name": "Login Home Environment",
 			"description": "",
 			"collectionId": "49652c13-61bc-0b6c-8ce1-084dad1a53ff",
-			"rawModeData": "{\n\t\"UserName\":\"{{username}}\",\n\t\"Password\": \"{{password}}\",\n\t\"DeviceId\":\"12345\",\n\t\"IsAmPmUsed\":true,\n\t\"IetfTag\":\"en-US\",\n\t\"TimeZoneOffset\":\"-06:00\"\n}",
-			"folder": "67ce9880-f59f-af6d-a677-c0ac63e3338d"
+			"rawModeData": "{\n\t\"UserName\":\"{{username}}\",\n\t\"Password\": \"{{password}}\",\n\t\"DeviceId\":\"12345\",\n\t\"IsAmPmUsed\":true,\n\t\"IetfTag\":\"en-US\",\n\t\"TimeZoneOffset\":\"-06:00\"\n}"
 		},
 		{
 			"id": "1ea1287d-1282-8f62-725c-e74b0930e8d4",
@@ -64,16 +63,14 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.Data.TokenDetails.AccessToken);\r\n\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.Data.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"patientid\", jsonData.Data.PatientId);\r\n\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1484175851969,
+			"time": 1484860239421,
 			"name": "Login Home Environment",
 			"description": "",
 			"collectionId": "49652c13-61bc-0b6c-8ce1-084dad1a53ff",
-			"rawModeData": "{\n\t\"UserName\":\"{{username}}\",\n\t\"Password\": \"{{password}}\",\n\t\"DeviceId\":\"12345\",\n\t\"IsAmPmUsed\":true,\n\t\"IetfTag\":\"en-US\",\n\t\"TimeZoneOffset\":\"-06:00\"\n}",
-			"isLastRequest": true,
-			"folder": "b84c6b4e-cd38-bf28-82e2-d6d36a966222"
+			"rawModeData": "{\n\t\"UserName\":\"{{username}}\",\n\t\"Password\": \"{{password}}\",\n\t\"DeviceId\":\"12345\",\n\t\"IsAmPmUsed\":true,\n\t\"IetfTag\":\"en-US\",\n\t\"TimeZoneOffset\":\"-06:00\"\n}"
 		},
 		{
 			"id": "437befe4-6bec-a123-db86-7672494c93d5",
@@ -104,10 +101,10 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeSingle + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeSingle;\n        tests[data.id + \" Expected: \" + data.messageerrorSingle + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorSingle;\n}",
+			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeSingle + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeSingle;\n    tests[data.id + \" Expected: \" + data.messageerrorSingle + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorSingle;\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1484584247408,
+			"time": 1484835475017,
 			"name": "GET Reminder Single",
 			"description": "",
 			"collectionId": "49652c13-61bc-0b6c-8ce1-084dad1a53ff",
@@ -123,10 +120,10 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeRec + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeRec;\n        tests[data.id + \" Expected: \" + data.messageerrorRec + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorRec;\n}",
+			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeRec + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeRec;\n    tests[data.id + \" Expected: \" + data.messageerrorRec + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorRec;\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1484584227882,
+			"time": 1484835501091,
 			"name": "GET Reminder Recurrent",
 			"description": "",
 			"collectionId": "49652c13-61bc-0b6c-8ce1-084dad1a53ff",
@@ -142,10 +139,10 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\n\nif(data.expected === true){\n    var Location = responseHeaders.Location.split(\"/\");\n    postman.setEnvironmentVariable(\"reminder_series\", Location[Location.length-1]);\n} else{\n    postman.setEnvironmentVariable(\"reminder_series\", 6746352);\n}",
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nif(data.expected === true){\n    var Location = responseHeaders.Location.split(\"/\");\n    postman.setEnvironmentVariable(\"reminder_series\", Location[Location.length-1]);\n} else{\n    postman.setEnvironmentVariable(\"reminder_series\", 6746352);\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1484583826549,
+			"time": 1484835549784,
 			"name": "Create Recurring reminder",
 			"description": "",
 			"collectionId": "49652c13-61bc-0b6c-8ce1-084dad1a53ff",

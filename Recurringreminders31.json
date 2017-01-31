@@ -301,8 +301,8 @@
 	"endDate": "2022-10-29T00:00:00Z",
 	"alertTimes": "9:00",
 	"expectedresult": 400,
-	"messageerror": "Daily reminders cannot be set more than 180 days from start date",
-	"bodycode": 4222,
+	"messageerror": "Daily reminders cannot be set more than 6 months from start date",
+	"bodycode": 4319,
 	"validateBody": true
 }, {
 	"id": "Weekly pass days",
@@ -318,8 +318,8 @@
 	"endDate": "2022-11-29T00:00:00Z",
 	"alertTimes": "9:00",
 	"expectedresult": 400,
-	"messageerror": "Weekly reminders cannot be set more than 180 days from start date",
-	"bodycode": 4223,
+	"messageerror": "Weekly reminders cannot be set more than 6 months from start date",
+	"bodycode": 4320,
 	"validateBody": true
 }, {
 	"id": "Monthly twelve months",
@@ -335,7 +335,7 @@
 	"endDate": "2023-11-29T00:00:00Z",
 	"alertTimes": "9:00",
 	"expectedresult": 400,
-	"messageerror": "Monthly reminders cannot be set more than 12 months from start date",
+	"messageerror": "Monthly reminders can't be set to occur for longer than 12 months",
 	"bodycode": 4225,
 	"validateBody": true
 },{
@@ -454,7 +454,7 @@
 	"endDate": "2022-2-5T00:00:00Z",
 	"alertTimes": "28:00",
 	"expectedresult": 400,
-	"messageerror": "0 reminders were created because the start and end date you selected does not span enough time.",
+	"messageerror": "0 reminders were created because the dates you selected do not span enough time",
 	"bodycode": 4233,
 	"validateBody": true
 },{
@@ -504,8 +504,10 @@
 	"startDate": "2022-2-2T00:00:00Z",
 	"endDate": "2022-03-29T00:00:00Z",
 	"alertTimes": ["8:00","9:00","12:00"],
-	"expectedresult": 500,
-	"validateBody": false
+	"expectedresult": 400,
+	"messageerror": "The Time Zone provided was an invalid value",
+	"bodycode": 4131,
+	"validateBody": true
 },{
 	"id": "Different month",
 	"name": "Negative flow - Different months error",

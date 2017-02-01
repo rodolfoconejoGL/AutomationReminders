@@ -454,7 +454,7 @@
 	"endDate": "2022-2-5T00:00:00Z",
 	"alertTimes": "28:00",
 	"expectedresult": 400,
-	"messageerror": "0 reminders were created because the dates you selected do not span enough time",
+	"messageerror": "0 reminders were created because the dates you selected do not span enough time.",
 	"bodycode": 4233,
 	"validateBody": true
 },{
@@ -508,10 +508,11 @@
 	"messageerror": "The Time Zone provided was an invalid value",
 	"bodycode": 4131,
 	"validateBody": true
-},{
-	"id": "Different month",
-	"name": "Negative flow - Different months error",
-	"description": "tester123",
+},
+{
+	"id": "Missing name parameter",
+	"name": "",
+	"description": "Miss name",
 	"category": 1,
 	"timezone": "EST",
 	"remindMeMinutes": 30,
@@ -522,8 +523,26 @@
 	"endDate": "2022-03-05T00:00:00Z",
 	"alertTimes": ["8:00","9:00","12:00"],
 	"expectedresult": 400,
-	"messageerror": "0 reminders were created because the start and end date you selected does not span enough time.",
-	"bodycode": 4233,
+	"messageerror": "Invalid or missing parameters: Name",
+	"bodycode": 4000,
+	"validateBody": true
+},
+{
+	"id": "Missing desc parameter",
+	"name": "Negative flow - miss desc",
+	"description": "",
+	"category": 1,
+	"timezone": "EST",
+	"remindMeMinutes": 30,
+	"recurrenceType": "M",
+	"weekdays": "W",
+	"monthlydeliveryday": 2,
+	"startDate": "2022-2-15T00:00:00Z",
+	"endDate": "2022-03-05T00:00:00Z",
+	"alertTimes": ["8:00","9:00","12:00"],
+	"expectedresult": 400,
+	"messageerror": "Invalid or missing parameters: Description",
+	"bodycode": 4000,
 	"validateBody": true
 }
 ]

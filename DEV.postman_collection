@@ -49,6 +49,7 @@
 				"5fdbe575-d545-d7d4-dd48-74d0499d3da9",
 				"18108e66-7970-fa59-b05b-70c540916346",
 				"70bf9754-750a-27fc-0bbd-585a788b3f61",
+				"2b9c4b95-4ed7-5146-a7ef-47969b0923e4",
 				"a9e9a221-9560-c8b0-3ff9-89b7075f1ab9",
 				"b3f15b6c-6206-2329-9db6-c9d605d15684"
 			],
@@ -150,11 +151,11 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"template_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487125057047,
+			"time": 1487179045864,
 			"name": "HOME - CREATE Template Reminders",
 			"description": "",
 			"collectionId": "0b1133c1-d7e9-ed9d-2940-4438afad61d0",
-			"rawModeData": "{\r\n  \"TypeId\": 1,\r\n  \"Name\": \"Services Template\",\r\n  \"Description\": \"Services Description\",\r\n  \"FrequencyId\": 3,\r\n  \"AlertTimes\": \"01:15\"\r\n}"
+			"rawModeData": "{\r\n  \"TypeId\": 1,\r\n  \"Name\": \"Services Template\",\r\n  \"Description\": \"Services Description\",\r\n  \"FrequencyId\": 1,\r\n  \"AlertTimes\": [\"01:15\"]\r\n}"
 		},
 		{
 			"id": "223b9d93-4cdf-593b-04b1-24a94f13077f",
@@ -195,6 +196,25 @@
 			"description": "",
 			"collectionId": "0b1133c1-d7e9-ed9d-2940-4438afad61d0",
 			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
+		},
+		{
+			"id": "2b9c4b95-4ed7-5146-a7ef-47969b0923e4",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}ReminderTemplates",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"template_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487178814366,
+			"name": "HOME - CREATE Template Reminders",
+			"description": "",
+			"collectionId": "0b1133c1-d7e9-ed9d-2940-4438afad61d0",
+			"rawModeData": "{\r\n  \"TypeId\": 1,\r\n  \"Name\": \"Services Template\",\r\n  \"Description\": \"Services Description\",\r\n  \"FrequencyId\": 1,\r\n  \"AlertTimes\": [\"01:15\"]\r\n}"
 		},
 		{
 			"id": "3461688c-5879-1dcc-cfd0-d5e94f6738e0",
@@ -274,7 +294,7 @@
 		{
 			"id": "61c8c8cd-cfc2-5b36-a6cb-6db50872d55a",
 			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
-			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=2100&StartDate=2015-02-01T20:17:52Z",
+			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=25&StartDate=2015-02-01T20:17:52Z",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -284,7 +304,7 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487122683826,
+			"time": 1487172127988,
 			"name": "GET ALL reminders",
 			"description": "",
 			"collectionId": "0b1133c1-d7e9-ed9d-2940-4438afad61d0",
@@ -303,7 +323,7 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487122684778,
+			"time": 1487172129691,
 			"name": "GET Reminders Not completed",
 			"description": "",
 			"collectionId": "0b1133c1-d7e9-ed9d-2940-4438afad61d0",

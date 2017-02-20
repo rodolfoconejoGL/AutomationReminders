@@ -1,0 +1,142 @@
+[  
+   {  
+      "id":"Appointment template reminder",
+      "name":"QAPositive flow - When TypeId is Appointment",
+      "description":"tester123",
+      "TypeId":1,
+      "FrequencyId":3,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+
+     
+
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Meds template reminder",
+      "name":"Positive flow - When TypeId is Meds",
+      "description":"tester124",
+      "TypeId":2,
+      "FrequencyId":3,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+    
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Labs template reminder",
+      "name":"Positive flow - When TypeId is Labs",
+      "description":"tester125",
+      "TypeId":3,
+      "FrequencyId":3,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+      
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Nutrition template reminder",
+      "name":"Positive flow - When TypeId is Nutrition",
+      "description":"tester126",
+      "TypeId":4,
+      "FrequencyId":3,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Self care template reminder",
+      "name":"Positive flow - When TypeId is Self-Care",
+      "description":"tester127",
+      "TypeId":6,
+      "FrequencyId":3,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Frequency single(6)",
+      "name":"Positive flow - When the  RemindMeMinutes is Frequency single",
+      "description":"tester123",
+      "TypeId":1,
+      "FrequencyId":6,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Frequency daily(1)",
+      "name":"Positive flow - When the  RemindMeMinutes is Frequency daily",
+      "description":"tester123",
+      "TypeId":1,
+      "FrequencyId":1,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Frequency single(3)",
+      "name":"Positive flow - When the  RemindMeMinutes is Frequency single",
+      "description":"tester123",
+      "TypeId":1,
+      "FrequencyId":3,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   {  
+      "id":"Frequency single(5)",
+      "name":"Positive flow - When the  RemindMeMinutes is Frequency single",
+      "description":"tester123",
+      "TypeId":1,
+      "FrequencyId":5,
+      "AlertTimes":[  
+         "00:22",
+         "14:22"
+      ],
+      "Weekdays":"M,T",
+      "expectedresult":201,
+      "messageerror":"",
+      "bodycode":201
+   },
+   
+]

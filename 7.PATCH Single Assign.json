@@ -195,8 +195,9 @@
 	"timezone": "EST",
 	"remindMeMinutes": 30,
 	"expectedresult": 400,
-	"messageerror": "Invalid or missing parameters: SingleReminder.ReminderTypeId",
-	"bodycode": 4000,
+	"messageerrorAll": "Reminder Type is invalid",
+	"messageerror": "Reminder Type is invalid",
+	"bodycode": 4204,
 	"validateBody": true
 },{
 	"id": "Bug 3062",
@@ -208,8 +209,9 @@
 	"remindMeMinutes": 30,
 	"alertTimes": ["8:00","9:00","12:00"],
 	"expectedresult": 400,
-	"messageerror": "Invalid or missing parameters: SingleReminder.TimeZoneName",
-	"bodycode": 4000,
+	"messageerrorAll": "The Time Zone provided was an invalid value",
+	"messageerror": "The Time Zone provided was an invalid value",
+	"bodycode": 4131,
 	"validateBody": true
 },
 {
@@ -223,6 +225,7 @@
 	"alertTimes": ["8:00","9:00","12:00"],
 	"expectedresult": 400,
 	"messageerror": "Invalid or missing parameters: SingleReminder.Name",
+   "messageerrorAll": "Invalid or missing parameters: SingleReminderAllPatients.Name",
 	"bodycode": 4000,
 	"validateBody": true
 },
@@ -237,6 +240,7 @@
 	"alertTimes": ["8:00","9:00","12:00"],
 	"expectedresult": 400,
 	"messageerror": "Invalid or missing parameters: SingleReminder.Description",
+	"messageerrorAll": "Invalid or missing parameters: SingleReminderAllPatients.Description",
 	"bodycode": 4000,
 	"validateBody": true
 },
@@ -250,8 +254,9 @@
        "remindMeMinutes": 30,
        "alertTimes": ["8:00","9:00","12:00"],
        "expectedresult": 400,
+       "messageerrorAll":"The due date you have chosen is in the past. Please select a valid due date.",
        "messageerror": "The due date you have chosen is in the past. Please select a valid due date.",
-       "bodycode": 4000,
+      "bodycode": 4112,
        "validateBody": true
 }
 ]

@@ -302,6 +302,7 @@
 	"alertTimes": "9:00",
 	"expectedresult": 400,
 	"messageerror": "Daily reminders cannot be set more than 6 months from start date",
+	"messageerrorALL": "Daily reminders cannot be set more than 6 months from start date",
 	"bodycode": 4319,
 	"validateBody": true
 }, {
@@ -319,6 +320,7 @@
 	"alertTimes": "9:00",
 	"expectedresult": 400,
 	"messageerror": "Weekly reminders cannot be set more than 6 months from start date",
+	"messageerrorALL": "Weekly reminders cannot be set more than 6 months from start date",
 	"bodycode": 4320,
 	"validateBody": true
 }, {
@@ -336,6 +338,7 @@
 	"alertTimes": "9:00",
 	"expectedresult": 400,
 	"messageerror": "Monthly reminders can't be set to occur for longer than 12 months",
+		"messageerrorALL": "Monthly reminders can't be set to occur for longer than 12 months",
 	"bodycode": 4225,
 	"validateBody": true
 },{
@@ -353,43 +356,10 @@
 	"alertTimes": "9:00",
 	"expectedresult": 400,
 	"messageerror": "End date should be greater than start date",
+	"messageerrorALL": "End date should be greater than start date",
 	"bodycode": 4226,
 	"validateBody": true
-},{
-	"id": "Invalid weekday",
-	"name": "Negative flow - Invalid Weekday Type",
-	"description": "tester123",
-	"category": 1,
-	"timezone": "EST",
-	"remindMeMinutes": 30,
-	"recurrenceType": "D",
-	"weekdays": "Z",
-	"monthlydeliveryday": 2,
-	"startDate": "2022-2-1T00:00:00Z",
-	"endDate": "2022-5-1T00:00:00Z",
-	"alertTimes": "9:00",
-	"expectedresult": 400,
-	"messageerror": "Invalid or missing parameters: Weekdays",
-	"bodycode": 4000,
-	"validateBody": true
-},{
-	"id": "Invalid monthly day",
-	"name": "Negative flow - The Monthly day invalid",
-	"description": "tester123",
-	"category": 1,
-	"timezone": "EST",
-	"remindMeMinutes": 30,
-	"recurrenceType": "M",
-	"weekdays": "W",
-	"monthlydeliveryday": 40,
-	"startDate": "2022-2-1T00:00:00Z",
-	"endDate": "2022-5-1T00:00:00Z",
-	"alertTimes": "9:00",
-	"expectedresult": 400,
-	"messageerror": "The Monthly Delivery Day was an invalid value",
-	"bodycode": 4129,
-	"validateBody": true
-},{
+,{
 	"id": "Invalid reminder type",
 	"name": "Negative flow - Reminder Type invalid",
 	"description": "tester123",
@@ -404,6 +374,7 @@
 	"alertTimes": "9:00",
 	"expectedresult": 400,
 	"messageerror": "Reminder Type is invalid",
+	"messageerrorALL": "Reminder Type is invalid",
 	"bodycode": 4204,
 	"validateBody": true
 },{
@@ -421,6 +392,7 @@
 	"alertTimes": "28:00",
 	"expectedresult": 400,
 	"messageerror": "End date should be greater than start date",
+	"messageerrorALL": "End date should be greater than start date",
 	"bodycode": 4226,
 	"validateBody": true
 },{
@@ -437,7 +409,8 @@
 	"endDate": "2022-3-1T00:00:00Z",
 	"alertTimes": "28:00",
 	"expectedresult": 400,
-	"messageerror": "Invalid or missing parameters: Weekdays",
+	"messageerror": "Invalid or missing parameters: RecurringReminder.Weekdays",
+	"messageerrorALL": "Invalid or missing parameters: RecurringReminder.Weekdays",
 	"bodycode": 4000,
 	"validateBody": true
 },{
@@ -455,6 +428,7 @@
 	"alertTimes": "28:00",
 	"expectedresult": 400,
 	"messageerror": "0 reminders were created because the dates you selected do not span enough time.",
+	"messageerrorALL": "0 reminders were created because the dates you selected do not span enough time.",
 	"bodycode": 4233,
 	"validateBody": true
 },{
@@ -471,25 +445,9 @@
 	"endDate": "2022-03-29T00:00:00Z",
 	"alertTimes": "9:00",
 	"expectedresult": 400,
-	"messageerror": "Invalid Weekday Type",
+	"messageerror": "Reminder Type is invalid",
+	"messageerrorALL": "Reminder Type is invalid",
 	"bodycode": 4204,
-	"validateBody": true
-},{
-	"id": "Bug 3063",
-	"name": "Negative flow - Repeated w-days allowed",
-	"description": "tester123",
-	"category": 2,
-	"timezone": "EST",
-	"remindMeMinutes": 30,
-	"recurrenceType": "D",
-	"weekdays": "W,M,W,M",
-	"monthlydeliveryday": 2,
-	"startDate": "2022-2-2T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z",
-	"alertTimes": "9:00",
-	"expectedresult": 400,
-	"messageerror": "Invalid or missing parameters: Weekdays",
-	"bodycode": 4000,
 	"validateBody": true
 },{
 	"id": "Bug 3062",
@@ -505,7 +463,8 @@
 	"endDate": "2022-03-29T00:00:00Z",
 	"alertTimes": ["8:00","9:00","12:00"],
 	"expectedresult": 400,
-	"messageerror": "Invalid Weekday Type",
+	"messageerror": "The Time Zone provided was an invalid value",
+	"messageerrorALL": "The Time Zone provided was an invalid value",
 	"bodycode": 4131,
 	"validateBody": true
 },
@@ -524,6 +483,7 @@
 	"alertTimes": ["8:00","9:00","12:00"],
 	"expectedresult": 400,
 	"messageerror": "Invalid or missing parameters: RecurringReminder.Name",
+	"messageerrorALL": "Invalid or missing parameters: RecurringReminderAllPatients.Name",
 	"bodycode": 4000,
 	"validateBody": true
 },
@@ -542,6 +502,7 @@
 	"alertTimes": ["8:00","9:00","12:00"],
 	"expectedresult": 400,
 	"messageerror": "Invalid or missing parameters: RecurringReminder.Description",
+	"messageerrorALL": "Invalid or missing parameters: RecurringReminderAllPatients.Description",
 	"bodycode": 4000,
 	"validateBody": true
 }

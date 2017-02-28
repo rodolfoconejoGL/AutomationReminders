@@ -13,6 +13,7 @@
 				"8ce230eb-94c7-f724-3878-df5733b3a9bd",
 				"a1f051c2-4adc-dd05-81be-be13a13cd2c7",
 				"06189d71-1801-4f0f-95b3-9c9d7b294236",
+				"c8a637fa-66a7-6ed0-108b-5b2747d6a0ea",
 				"e97f08e6-671b-0a1b-7564-1a28f1a6fdf6",
 				"794a4ffa-400d-426f-ad1b-695feb83254a",
 				"bfdbcf89-c671-5394-6545-fa402b5d067d",
@@ -21,7 +22,9 @@
 				"0072cc8d-8439-f0ab-5d62-4140d3ba3e1e",
 				"e18a2fb2-d445-218f-f7da-4e4a886b1a9b",
 				"089b81f2-293d-366b-d335-fb8c954f6106",
-				"78ba0256-f469-b3d6-648b-68f32583780b"
+				"78ba0256-f469-b3d6-648b-68f32583780b",
+				"9b9069f8-62f0-b353-286b-00004132437d",
+				"71c36cda-9e40-72b9-5727-1769304dcc79"
 			],
 			"owner": "1378843",
 			"collectionId": "31da7fc3-440a-1741-04f0-8b2cc18bff23"
@@ -106,14 +109,15 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 204;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487707191855,
-			"name": "GET Reminder Single",
+			"time": 1487966751705,
+			"name": "Mark reminders as viewed",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{ \"ViewedReminderIds\":[79406,79406] }"
+			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1",
+			"rawModeData": "{ \"ViewedReminderIds\":[297244] }"
 		},
 		{
 			"id": "089b81f2-293d-366b-d335-fb8c954f6106",
@@ -125,15 +129,14 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First reminder id\"] = jsonData.Value[0].ReminderTypeId === 1;\ntests[\"Second reminder id\"] = jsonData.Value[1].ReminderTypeId === 2;\ntests[\"Third reminder id\"] = jsonData.Value[2].ReminderTypeId === 3;\ntests[\"Fourth reminder id\"] = jsonData.Value[3].ReminderTypeId === 4;\ntests[\"Fifth reminder id\"] = jsonData.Value[4].ReminderTypeId === 6;\n\ntests[\"First reminder Name\"] = jsonData.Value[0].Name === \"Medications\";\ntests[\"Second reminder Name\"] = jsonData.Value[1].Name === \"Labs\";\ntests[\"Third reminder Name\"] = jsonData.Value[2].Name === \"Appointment\";\ntests[\"Fourth reminder Name\"] = jsonData.Value[3].Name === \"Self Care\";\ntests[\"Fifth reminder Name\"] = jsonData.Value[4].Name === \"Nutrition\";",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487122715073,
+			"time": 1488300550652,
 			"name": "GET Reminder Types",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}",
-			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1"
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
 			"id": "0d98421b-b041-83f2-7101-adfbf53a3225",
@@ -206,11 +209,12 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\n\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487706354501,
+			"time": 1487737696197,
 			"name": "Assign Template Single Reminder IDs",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{\n  \"SingleReminder\": \n  {\n\"PatientIDs\": [{{patientid}}, {{patientid}}],\n\t\"DueDates\": [\"2017-03-08T10:00:00Z\"],\n\t\"Name\": \"DADS\",\n\t\"Description\": \"88\",\n\t\"ReminderTypeId\": 1,\n\t\"IsImportant\": false,\n\t\"TimeZoneName\": \"EST\",\n    \"RemindMeMinutes\": [30, 60]\n \n  }\n}\n\n\n\n"
+			"folder": "ba8370b1-b5c0-8a5e-74c2-44ad110c5bfe",
+			"rawModeData": "{\n  \"SingleReminder\": \n  {\n    \"PatientIDs\": [{{patientid}}],\n\t\"DueDates\": [\"2017-03-08T10:00:00Z\"],\n\t\"Name\": \"DADS\",\n\t\"Description\": \"88\",\n\t\"ReminderTypeId\": 1,\n\t\"IsImportant\": false,\n\t\"TimeZoneName\": \"EST\",\n    \"RemindMeMinutes\": [30, 60]\n \n  }\n}\n\n\n\n"
 		},
 		{
 			"id": "22b936f5-ff7b-aac7-7978-ffd3c50ca8ae",
@@ -285,12 +289,12 @@
 			"tests": "tests[\"Status code is 204 Deleted\"] = responseCode.code === 204;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487125108783,
+			"time": 1488209326185,
 			"name": "Delete Recurring reminder",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "",
-			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1"
+			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1",
+			"rawModeData": ""
 		},
 		{
 			"id": "4c62c10d-05dd-4ef5-7ca8-444c584f1774",
@@ -350,7 +354,28 @@
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
 			"rawModeData": "{\r\n  \"Name\": \"DEMO\",\r\n  \"TypeId\": 4,\r\n  \"Description\": \"This is my new Template\",\r\n  \"FrequencyId\": 3,\r\n  \"AlertTimes\": \"01:15, 12:45, 14:45, 20:00\",\r\n  \"Weekdays\": null\r\n}",
-			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9"
+			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9",
+			"isFromCollection": true,
+			"collectionRequestId": "5f801db8-a25e-b6e1-cbfa-fc264bcff4d4"
+		},
+		{
+			"id": "71c36cda-9e40-72b9-5727-1769304dcc79",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v2/Reminders/ReminderFrequencies",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First id ok\"] = jsonData.Data[0].ReminderFrequencyId == 1;\ntests[\"Second id ok\"] = jsonData.Data[1].ReminderFrequencyId == 2;\ntests[\"Third id ok\"] = jsonData.Data[2].ReminderFrequencyId == 3;\ntests[\"Fourth id ok\"] = jsonData.Data[3].ReminderFrequencyId == 4;\ntests[\"Fifth id ok\"] = jsonData.Data[4].ReminderFrequencyId == 5;\ntests[\"Sixth id ok\"] = jsonData.Data[5].ReminderFrequencyId == 6;\n\ntests[\"First name ok\"] = jsonData.Data[0].Name == \"Daily\";\ntests[\"Second name ok\"] = jsonData.Data[1].Name == \"Every Other Day\";\ntests[\"Third name ok\"] = jsonData.Data[2].Name == \"Weekly\";\ntests[\"Fourth name ok\"] = jsonData.Data[3].Name == \"Bi-Weekly\";\ntests[\"Fifth name ok\"] = jsonData.Data[4].Name == \"Monthly\";\ntests[\"Sixth name ok\"] = jsonData.Data[5].Name == \"Single\";\n\ntests[\"First abbreviation ok\"] = jsonData.Data[0].Abbreviation == \"D\";\ntests[\"Second abbreviation ok\"] = jsonData.Data[1].Abbreviation == \"E\";\ntests[\"Third abbreviation ok\"] = jsonData.Data[2].Abbreviation == \"W\";\ntests[\"Fourth abbreviation ok\"] = jsonData.Data[3].Abbreviation == \"B\";\ntests[\"Fifth abbreviation ok\"] = jsonData.Data[4].Abbreviation == \"M\";\ntests[\"Sixth abbreviation ok\"] = jsonData.Data[5].Abbreviation == \"S\";",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488302825208,
+			"name": "GET Frequency Ids",
+			"description": "",
+			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
 			"id": "78ba0256-f469-b3d6-648b-68f32583780b",
@@ -362,15 +387,14 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar variable = postman.getEnvironmentVariable(\"environment\")\n\nvar jsonData = JSON.parse(responseBody);\n\nif(variable.includes(\"india\"))\n{\n   tests[\"First timezoneId ok\"] = jsonData.Data[0].TimesZoneId == 1;\n    tests[\"Second timezoneId ok\"] = jsonData.Data[1].TimesZoneId == 2; \n    tests[\"Thrid timezoneId ok\"] = jsonData.Data[2].TimesZoneId == 3; \n    tests[\"Fourth timezoneId ok\"] = jsonData.Data[3].TimesZoneId == 4; \n    tests[\"Fifth timezoneId ok\"] = jsonData.Data[4].TimesZoneId == 5; \n    \n    tests[\"First abbreviation ok\"] = jsonData.Data[0].Abbreviation == \"AST\";\n    tests[\"Second abbreviation ok\"] = jsonData.Data[1].Abbreviation == \"PKST\"; \n    tests[\"Thrid abbreviation ok\"] = jsonData.Data[2].Abbreviation == \"IST\"; \n    tests[\"Fourth abbreviation ok\"] = jsonData.Data[3].Abbreviation == \"KST\"; \n    tests[\"Fifth abbreviation ok\"] = jsonData.Data[4].Abbreviation == \"CHST\";\n    \n    tests[\"First name ok\"] = jsonData.Data[0].Name == \"Afghanistan\";\n    tests[\"Second name ok\"] = jsonData.Data[1].Name == \"Pakistan\"; \n    tests[\"Thrid name ok\"] = jsonData.Data[2].Name == \"India\"; \n    tests[\"Fourth name ok\"] = jsonData.Data[3].Name == \"Kyrgyzstan\"; \n    tests[\"Fifth name ok\"] = jsonData.Data[4].Name == \"China\";\n}\nelse\n{\n    tests[\"First timezoneId ok\"] = jsonData.Data[0].TimesZoneId == 1;\n    tests[\"Second timezoneId ok\"] = jsonData.Data[1].TimesZoneId == 2; \n    tests[\"Thrid timezoneId ok\"] = jsonData.Data[2].TimesZoneId == 3; \n    tests[\"Fourth timezoneId ok\"] = jsonData.Data[3].TimesZoneId == 4; \n    tests[\"Fifth timezoneId ok\"] = jsonData.Data[4].TimesZoneId == 5; \n    tests[\"Sixth timezoneId ok\"] = jsonData.Data[5].TimesZoneId == 6; \n    tests[\"Seventh timezoneId ok\"] = jsonData.Data[6].TimesZoneId == 7; \n    tests[\"Eigth timezoneId ok\"] = jsonData.Data[7].TimesZoneId == 8; \n    tests[\"Ninth timezoneId ok\"] = jsonData.Data[8].TimesZoneId == 9; \n    tests[\"Tenth timezoneId ok\"] = jsonData.Data[9].TimesZoneId == 10;\n    \n    tests[\"First abbreviation ok\"] = jsonData.Data[0].Abbreviation == \"EST\";\n    tests[\"Second abbreviation ok\"] = jsonData.Data[1].Abbreviation == \"EST-NO\"; \n    tests[\"Thrid abbreviation ok\"] = jsonData.Data[2].Abbreviation == \"CST\"; \n    tests[\"Fourth abbreviation ok\"] = jsonData.Data[3].Abbreviation == \"CST-NO\"; \n    tests[\"Fifth abbreviation ok\"] = jsonData.Data[4].Abbreviation == \"MST\"; \n    tests[\"Sixth abbreviation ok\"] = jsonData.Data[5].Abbreviation == \"MST-NO\"; \n    tests[\"Seventh abbreviation ok\"] = jsonData.Data[6].Abbreviation == \"PST\"; \n    tests[\"Eigth abbreviation ok\"] = jsonData.Data[7].Abbreviation == \"PST-NO\"; \n    tests[\"Ninth abbreviation ok\"] = jsonData.Data[8].Abbreviation == \"AKST-NO\"; \n    tests[\"Tenth abbreviation ok\"] = jsonData.Data[9].Abbreviation == \"HAST-NO\";\n    \n    tests[\"First name ok\"] = jsonData.Data[0].Name == \"Eastern\";\n    tests[\"Second name ok\"] = jsonData.Data[1].Name == \"Eastern (No DST)\"; \n    tests[\"Thrid name ok\"] = jsonData.Data[2].Name == \"Central\"; \n    tests[\"Fourth name ok\"] = jsonData.Data[3].Name == \"Central (No DST)\"; \n    tests[\"Fifth name ok\"] = jsonData.Data[4].Name == \"Mountain\"; \n    tests[\"Sixth name ok\"] = jsonData.Data[5].Name == \"Mountain (No DST)\"; \n    tests[\"Seventh name ok\"] = jsonData.Data[6].Name == \"Pacific\"; \n    tests[\"Eigth name ok\"] = jsonData.Data[7].Name == \"Pacific (No DST)\"; \n    tests[\"Ninth name ok\"] = jsonData.Data[8].Name == \"Alaska (No DST)\"; \n    tests[\"Tenth name ok\"] = jsonData.Data[9].Name == \"Hawaii (No DST)\"; \n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487122713866,
+			"time": 1488302158808,
 			"name": "GET Time Zones",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}",
-			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1"
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
 			"id": "794a4ffa-400d-426f-ad1b-695feb83254a",
@@ -429,7 +453,9 @@
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
 			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9"
+			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9",
+			"isFromCollection": true,
+			"collectionRequestId": "892ce9c0-42eb-c27d-f6b8-aa05eadcc5b9"
 		},
 		{
 			"id": "8ce230eb-94c7-f724-3878-df5733b3a9bd",
@@ -444,12 +470,12 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487694053033,
+			"time": 1487957980906,
 			"name": "Create single reminder",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 1,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"MST\",\n  \"RemindMeMinutes\": [30,60]\n}",
-			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1"
+			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1",
+			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 1,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"CST\",\n  \"RemindMeMinutes\": [30,60]\n}"
 		},
 		{
 			"id": "8fa142d2-ec4f-5152-b14c-a81997aa4f15",
@@ -483,12 +509,14 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n postman.setEnvironmentVariable(\"name\", 12323);\n \n \n function generateNumbers(min,max){\nvar resultmath=  Math.floor(Math.random() * max + min);\nreturn resultmath.toString();\n   \n}\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487574419489,
-			"name": "HOME - GET ALL Reminder Templates copy",
+			"time": 1487793358639,
+			"name": "HOME - GET Reminder Templates",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}",
-			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9"
+			"isFromCollection": true,
+			"collectionRequestId": "924fa281-25ce-e49c-eb4d-e0d6cb67a29b",
+			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
 		},
 		{
 			"id": "93401644-fdba-23f5-4228-1fa5062a2c8d",
@@ -511,6 +539,25 @@
 			"folder": "22c5b78a-d121-f0ae-0706-bc727db580d0"
 		},
 		{
+			"id": "9b9069f8-62f0-b353-286b-00004132437d",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
+			"url": "{{environment}}Reminders/RemindMeMinutes",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First title ok\"] = jsonData.Data[0].Title == \"30 min before\";\ntests[\"Second title ok\"] = jsonData.Data[1].Title == \"1 hour before\";\ntests[\"Third title ok\"] = jsonData.Data[2].Title == \"2 hours before\";\ntests[\"Fourth title ok\"] = jsonData.Data[3].Title == \"24 hours before\";\ntests[\"Fifth title ok\"] = jsonData.Data[4].Title == \"2 days before\";\ntests[\"Sixth title ok\"] = jsonData.Data[5].Title == \"3 days before\";\n\ntests[\"First minutes ok\"] = jsonData.Data[0].Minutes == \"30\";\ntests[\"Second minutes ok\"] = jsonData.Data[1].Minutes == \"60\";\ntests[\"Third minutes ok\"] = jsonData.Data[2].Minutes == \"120\";\ntests[\"Fourth minutes ok\"] = jsonData.Data[3].Minutes == \"1440\";\ntests[\"Fifth minutes ok\"] = jsonData.Data[4].Minutes == \"2880\";\ntests[\"Sixth minutes ok\"] = jsonData.Data[5].Minutes == \"4320\";\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488300226907,
+			"name": "GET Remind Me Times",
+			"description": "",
+			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
+		},
+		{
 			"id": "a1f051c2-4adc-dd05-81be-be13a13cd2c7",
 			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
 			"url": "{{environment}}v2/Reminders/{{reminder_id}}",
@@ -522,15 +569,14 @@
 			"version": 2,
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
-			"helperAttributes": "{}",
+			"helperAttributes": {},
 			"time": 1487122289478,
 			"name": "GET Reminder Single",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
 			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}",
 			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1",
-			"isFromCollection": true,
-			"collectionRequestId": "06189d71-1801-4f0f-95b3-9c9d7b294236"
+			"isFromCollection": true
 		},
 		{
 			"id": "bcac126e-8214-3b2b-fb7d-0a1075986ddd",
@@ -593,6 +639,26 @@
 			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1"
 		},
 		{
+			"id": "c8a637fa-66a7-6ed0-108b-5b2747d6a0ea",
+			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
+			"url": "{{environment}}Patients/{{patientid}}/Reminders/{{reminder_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PATCH",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487958992183,
+			"name": "Mark reminders as completed",
+			"description": "",
+			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
+			"folder": "6cedb917-9b9c-f6db-2cd0-5c19dc5d79e1",
+			"rawModeData": "{ \"IsCompleted\":true }"
+		},
+		{
 			"id": "ce724a85-4944-434a-2fb3-421036422c64",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
 			"url": "{{environment}}ReminderTemplates/{{template_id}}",
@@ -605,12 +671,12 @@
 			"tests": "/*\nvar Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"template_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n*/",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487574560921,
+			"time": 1488294504579,
 			"name": "HOME - Edit Template Reminders",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{\n\"Name\":\"{{namevalue}}\"\n,\"TypeId\":{{testVal}},\n\"Description\":\"{{desvalue}}\",\n\"FrequencyId\":{{frequencyvalue}},\n\"AlertTimes\":[\"{{time}}\"],\n\"Weekdays\":\"M,T\"\n}",
-			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9"
+			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9",
+			"rawModeData": "{\n\"Name\":\"Demo test edited\",\n\"TypeId\":1,\n\"Description\":\"Demo test edited\",\n\"FrequencyId\":3,\n\"AlertTimes\":[\"00:22\",\"14:22\", \"15:44\"],\n\"Weekdays\":\"M,T\"\n}\n"
 		},
 		{
 			"id": "e18a2fb2-d445-218f-f7da-4e4a886b1a9b",
@@ -665,12 +731,12 @@
 			"tests": "function generateNumbers(min,max){\nreturn  Math.round(Math.random()*max) + min\n   \n}\nvar Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"template_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\n\nvar frequencyval=generateNumbers(1,6);\npostman.setEnvironmentVariable(\"frequencyvalue\", frequencyval);\nvar typeyval=generateNumbers(1,6);\npostman.setEnvironmentVariable(\"typeyvalue\", typeyval);\nvar nameval=generateNumbers(1,100);\npostman.setEnvironmentVariable(\"namevalue\", nameval+\"Name\");\nvar desval=generateNumbers(1,100);\npostman.setEnvironmentVariable(\"desvalue\", desval+\"Description\");\nvar hour=generateNumbers(1,23);\nvar minutes=generateNumbers(1,23);\npostman.setEnvironmentVariable(\"time\", hour+\":\"+minutes);\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487574478182,
+			"time": 1488294503638,
 			"name": "HOME - CREATE Template Reminders",
 			"description": "",
 			"collectionId": "f90a8139-2d82-c23d-efe1-7ace471fbdc7",
-			"rawModeData": "{\"Name\":\"testhoy\"\n,\"TypeId\":1,\n\"Description\":\"hoytest\",\n\"FrequencyId\":3,\n\"AlertTimes\":[\"00:22\",\"14:22\"],\n\"Weekdays\":\"M,T\"\n}\n\n\n ",
-			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9"
+			"folder": "6fcb0aa3-5a13-e624-4327-f044ecacd6c9",
+			"rawModeData": "{\n\"Name\":\"Test Demo\",\n\"TypeId\":1,\n\"Description\":\"Test Demo desc\",\n\"FrequencyId\":3,\n\"AlertTimes\":[\"00:22\",\"14:22\"],\n\"Weekdays\":\"M,T\"\n}\n\n\n "
 		},
 		{
 			"id": "f5e35ffe-799c-14aa-b20c-1f894045efa8",

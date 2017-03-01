@@ -107,30 +107,6 @@
 	"expectedresult": 201,
 	"messageerror": "",
 	"bodycode": 201
-},{
-	"id": "PST time zone",
-	"name": "Positive flow - When time zone is IST",
-	"duedates": "2022-12-19T05:41:00Z",
-	"description": "tester123",
-	"category": 1,
-	"timezone": "IST",
-	"remindMeMinutes": 30,
-	"alertTimes": "9:00",
-	"expectedresult": 201,
-	"messageerror": "",
-	"bodycode": 201
-},{
-	"id": "PST time zone",
-	"name": "Positive flow - When time zone is EST",
-	"duedates": "2022-12-19T05:41:00Z",
-	"description": "tester123",
-	"category": 1,
-	"timezone": "IST",
-	"remindMeMinutes": 30,
-	"alertTimes": "9:00",
-	"expectedresult": 201,
-	"messageerror": "",
-	"bodycode": 201
 }, {
 	"id": "Remind me (1)",
 	"name": "Positive flow - When the  RemindMeMinutes is 30",

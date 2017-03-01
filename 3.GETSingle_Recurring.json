@@ -115,19 +115,6 @@
 	"startDate": "2022-02-02T00:00:00Z",
 	"endDate": "2022-03-29T00:00:00Z",
 	"expected" : true
-},{
-	"id": "IST time zone",
-	"name": "Positive flow - When time zone is IST",
-	"description": "tester123",
-	"category": 1,
-	"timezone": "IST",
-	"remindMeMinutes": 30,
-	"recurrenceType": "D",
-	"weekdays": "W",
-	"monthlydeliveryday": 2,
-	"startDate": "2022-02-02T00:00:00Z",
-	"endDate": "2022-03-29T00:00:00Z",
-	"expected" : true
 }, {
 	"id": "Remind me (1)",
 	"name": "Positive flow - When the  RemindMeMinutes is 30",

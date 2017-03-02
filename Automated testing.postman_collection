@@ -29,6 +29,18 @@
 			"collectionId": "5c18ad51-8d74-d2a5-66ee-666ffc5a5088"
 		},
 		{
+			"id": "20d7dae0-7bec-427e-ba73-33ba2ab60603",
+			"name": "2.POST RecurrentReminder (Patient)(V3)",
+			"description": "",
+			"order": [
+				"a4334382-8876-9016-92ac-eb25bff3a9fc",
+				"2df6ec96-f66a-7d81-c2c4-5db2df839d16",
+				"40946532-f076-f5bf-8f8e-64809896f8c5"
+			],
+			"owner": "1378843",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79"
+		},
+		{
 			"id": "fe7f1aa9-2587-d796-2fef-77d29dc3f5a1",
 			"name": "3.GET Single/Recurring Reminders ",
 			"description": "",
@@ -40,6 +52,22 @@
 				"9ab49022-8647-881c-166b-f7387d7e903c",
 				"c1bd89a4-acd6-e0c4-8456-4651c6e9c7aa",
 				"fed9a9d5-645c-a945-5ad1-767bb8bd0c70"
+			],
+			"owner": "1378843",
+			"collectionId": "5c18ad51-8d74-d2a5-66ee-666ffc5a5088"
+		},
+		{
+			"id": "4070b4c4-a360-c394-2ea1-60f1509b6308",
+			"name": "3.GET Single/Recurring Reminders(V3)",
+			"description": "",
+			"order": [
+				"6cf45eda-c074-4f62-a8e5-c9427767de1c",
+				"68c9b59a-2d43-0c9d-9425-9af991fa418f",
+				"baffa71d-6345-5ef8-752b-a4526c26912c",
+				"2633ef2a-ed26-c5ce-2c29-f432755c9be8",
+				"5b495a14-77fa-3180-e5b3-12fa65a816b1",
+				"6411b536-cc8b-a6fb-1ad5-4f5db0863c83",
+				"c9983813-671c-a03c-90ff-1cc6cd56f397"
 			],
 			"owner": "1378843",
 			"collectionId": "5c18ad51-8d74-d2a5-66ee-666ffc5a5088"
@@ -217,6 +245,26 @@
 			"folder": "fb2dcd1b-1b2f-b62a-8488-286c4cd976d4"
 		},
 		{
+			"id": "2633ef2a-ed26-c5ce-2c29-f432755c9be8",
+			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders/{{reminder_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "if(data.expected === true)\n{\n    tests[\"Status code is 204 Deleted\"] = responseCode.code === 204;\n}\nelse\n{\n    tests[\"Status code is 400 Bad Request\"] = responseCode.code === 400;\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487172512613,
+			"name": "DELETE Single Reminder",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "",
+			"folder": "4070b4c4-a360-c394-2ea1-60f1509b6308"
+		},
+		{
 			"id": "291b47e7-5ab7-8711-5d01-0593f1062e68",
 			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
 			"url": "{{environment}}v2/Reminders/RecurringReminders/{{reminder_series}}",
@@ -236,6 +284,25 @@
 			"folder": "c30fa77a-ff0d-7431-1370-0f7d2f8d6929",
 			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}",
 			"isFromCollection": true
+		},
+		{
+			"id": "2df6ec96-f66a-7d81-c2c4-5db2df839d16",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
+			"url": "{{environment}}/v3/Reminders/RecurringReminders",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[data.id + \" Request Status\"] = responseCode.code === data.expectedresult;\n\nif(responseCode.code === 201){\n    tests[\"Location-Type is present into header\"] = responseHeaders.hasOwnProperty(\"Location\");\n    var Location = responseHeaders.Location.split(\"/\");\n    postman.setEnvironmentVariable(\"reminder_series\", Location[Location.length-1]);\n}\nelse\n{\n    postman.setEnvironmentVariable(\"reminder_series\", 6352);\n}\n\nif(responseBody!==null && responseCode.code !== 201){\nvar jsonData = JSON.parse(responseBody);\n    if(data.validateBody === true){\n        tests[data.id + \" Expected: \" + data.bodycode + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycode;\n        tests[data.id + \" Expected: \" + data.messageerror + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerror;\n    }\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488484584719,
+			"name": "Create recurring reminder ",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "{\n  \t\"IsClinicianCreated\":  false,\n  \t\"PatientId\": {{patientid}},\n  \t\"Name\": \"{{name}}\",\n  \t\"Description\": \"{{description}}\",\n  \t\"ReminderTypeId\": {{category}},\n  \t\"IsImportant\": false,\n  \t\"TimeZoneName\": \"{{timezone}}\",\n  \t\"RemindMeMinutes\": [{{remindMeMinutes}}],\n\t\"ReminderFrequencyId\":{{reminderFrequencyId}},\n\t\"Weekdays\": \"{{weekdays}}\",\n    \"MonthlyDeliveryDay\": {{monthlydeliveryday}},\n\t\"startDate\": \"{{startDate}}\",\n\t\"endDate\": \"{{endDate}}\",\n    \"AlertTimes\": [\"09:00\",\"12:00\"]\n}\n"
 		},
 		{
 			"id": "2e2acfd7-4378-880f-e6cf-076b2b6d73e6",
@@ -381,6 +448,26 @@
 			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
+			"id": "40946532-f076-f5bf-8f8e-64809896f8c5",
+			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v2/Patients/{{patientid}}/RecurringReminders/{{reminder_series}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "if(data.expectedresult === 201)\n{\n    tests[\"Status code is 204 Deleted\"] = responseCode.code === 204;\n}\nelse\n{\n    tests[\"Status code is 400 Bad Request\"] = responseCode.code === 400;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487571683487,
+			"name": "Delete Recurring reminder",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "",
+			"folder": "20d7dae0-7bec-427e-ba73-33ba2ab60603"
+		},
+		{
 			"id": "4ab57eb9-1893-3905-9f55-269395a5ad1c",
 			"headers": "Content-Type: application/json\n",
 			"url": "{{environment}}Accounts/ClinicianLogin",
@@ -460,6 +547,44 @@
 			"folder": "d4a19c29-4d55-94ed-2283-ec7bd83fc01d"
 		},
 		{
+			"id": "5b495a14-77fa-3180-e5b3-12fa65a816b1",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v3/Reminders/RecurringReminders",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nif(data.expected === true){\n    var Location = responseHeaders.Location.split(\"/\");\n    postman.setEnvironmentVariable(\"reminder_series\", Location[Location.length-1]);\n} else{\n    postman.setEnvironmentVariable(\"reminder_series\", 6352);\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488485745469,
+			"name": "Create Recurring reminder",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "{\n    \"IsClinicianCreated\":  true,\n  \t\"PatientId\": {{patientid}},\n  \t\"Name\": \"{{name}}\",\n  \t\"Description\": \"{{description}}\",\n  \t\"ReminderTypeId\": {{category}},\n  \t\"IsImportant\": false,\n  \t\"TimeZoneName\": \"{{timezone}}\",\n  \t\"RemindMeMinutes\": [{{remindMeMinutes}}],\n\t\"ReminderFrequencyId\":{{reminderFrequencyId}},\n\t\"Weekdays\": \"{{weekdays}}\",\n    \"MonthlyDeliveryDay\": {{monthlydeliveryday}},\n\t\"startDate\": \"{{startDate}}\",\n\t\"endDate\": \"{{endDate}}\",\n    \"AlertTimes\": [\"09:00\",\"12:00\"]\n}"
+		},
+		{
+			"id": "6411b536-cc8b-a6fb-1ad5-4f5db0863c83",
+			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v3/Reminders/RecurringReminders/{{reminder_series}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n    tests[data.id + \" Name matches\"] = jsonData.Data.Name === data.name;\n    tests[data.id + \" Description matches\"] = jsonData.Data.Description === data.description;\n    tests[data.id + \" Category matches\"] = jsonData.Data.ReminderTypeId === data.category;\n    tests[data.id + \" Timezone matches\"] = jsonData.Data.TimeZoneName === data.timezone;\n    tests[data.id + \" Remind me Minutes matches\"] = jsonData.Data.RemindMeMinutes.length !== 0;\n    tests[data.id + data.StartDate] = jsonData.Data.StartDate !== \"\" && jsonData.Data.StartDate === data.startDate;\n    tests[data.id + \" End date matches\"] = jsonData.Data.EndDate !== \"\" && jsonData.Data.EndDate === data.endDate;\n    if(data.reminderFrequencyId === 1)\n    {\n        tests[data.id + \" Frequency Type and Id Matches\"] = jsonData.Data.RecurrenceType === \"D\" && jsonData.Data.ReminderFrequency.ReminderFrequencyId === data.reminderFrequencyId;\n    }\n    if(data.reminderFrequencyId === 2)\n    {\n        tests[data.id + \" Frequency Type and Id Matches\"] = jsonData.Data.RecurrenceType === \"E\" && jsonData.Data.ReminderFrequency.ReminderFrequencyId === data.reminderFrequencyId;\n    }\n    if(data.reminderFrequencyId === 3)\n    {\n        tests[data.id + \" Frequency Type and Id Matches\"] = jsonData.Data.RecurrenceType === \"W\" && jsonData.Data.ReminderFrequency.ReminderFrequencyId === data.reminderFrequencyId;\n    }\n    if(data.reminderFrequencyId === 4)\n    {\n        tests[data.id + \" Frequency Type and Id Matches\"] = jsonData.Data.RecurrenceType === \"B\" && jsonData.Data.ReminderFrequency.ReminderFrequencyId === data.reminderFrequencyId;\n    }\n    if(data.reminderFrequencyId === 5)\n    {\n        tests[data.id + \" Frequency Type and Id Matches\"] = jsonData.Data.RecurrenceType === \"M\" && jsonData.Data.ReminderFrequency.ReminderFrequencyId === data.reminderFrequencyId;\n    }\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeRec + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeRec;\n    tests[data.id + \" Expected: \" + data.messageerrorRec + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorRec;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488490744091,
+			"name": "GET Reminder Recurrent",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
+		},
+		{
 			"id": "6432dba9-2c2f-0a99-bd61-aa0d28bab38b",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
 			"url": "{{environment}}ReminderTemplates/{{template_id}}",
@@ -480,6 +605,26 @@
 			"folder": "d66a8bbf-ead1-9ed6-922f-fc9d382dcd6a"
 		},
 		{
+			"id": "68c9b59a-2d43-0c9d-9425-9af991fa418f",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v2/Reminders",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nif(data.expected === true){\n    var Location = responseHeaders.Location.split(\"/\");\n    postman.setEnvironmentVariable(\"reminder_id\", Location[Location.length-1]);\n} else{\n    postman.setEnvironmentVariable(\"reminder_id\", 6746352);\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487172685528,
+			"name": "Create single reminder",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "{\n  \"IsClinicianCreated\":  true,\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2022-12-19T05:41:00Z\"],\n  \"Name\": \"{{name}}\",\n  \"Description\": \"{{description}}\",\n  \"ReminderTypeId\": {{category}},\n  \"IsImportant\": false,\n  \"TimeZoneName\": \"{{timezone}}\",\n  \"RemindMeMinutes\": [{{remindMeMinutes}}]\n}",
+			"folder": "4070b4c4-a360-c394-2ea1-60f1509b6308"
+		},
+		{
 			"id": "6a38a0d4-d924-2dce-242d-c785623d6153",
 			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
 			"url": "{{environment}}v2/Reminders",
@@ -498,6 +643,26 @@
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
 			"rawModeData": "{\n  \"IsClinicianCreated\":  true,\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"{{duedates}}\"],\n  \"Name\": \"{{name}}\",\n  \"Description\": \"{{description}}\",\n  \"ReminderTypeId\": {{category}},\n  \"IsImportant\": false,\n  \"TimeZoneName\": \"{{timezone}}\",\n  \"RemindMeMinutes\": [{{remindMeMinutes}}]\n}",
 			"folder": "0bf4411a-190f-a832-26b7-ed11010755b5"
+		},
+		{
+			"id": "6cf45eda-c074-4f62-a8e5-c9427767de1c",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\n",
+			"url": "{{environment}}Accounts/Login",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.Data.TokenDetails.AccessToken);\r\n\r\npostman.setEnvironmentVariable(\"patientid\", jsonData.Data.PatientId);\r\n\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\r\n\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487172686352,
+			"name": "Login Home Environment",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "{\n\t\"UserName\":\"{{username}}\",\n\t\"Password\": \"{{password}}\",\n\t\"DeviceId\":\"12345\",\n\t\"IsAmPmUsed\":true,\n\t\"IetfTag\":\"en-US\",\n\t\"TimeZoneOffset\":\"-06:00\"\n}",
+			"folder": "4070b4c4-a360-c394-2ea1-60f1509b6308"
 		},
 		{
 			"id": "75a9e4ca-4884-1e79-2028-87ba78c1d214",
@@ -826,6 +991,26 @@
 			"isFromCollection": true
 		},
 		{
+			"id": "a4334382-8876-9016-92ac-eb25bff3a9fc",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\n",
+			"url": "{{environment}}Accounts/Login",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\r\n\r\npostman.setEnvironmentVariable(\"token\", jsonData.Data.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"patientid\", jsonData.Data.PatientId);\r\n\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487571688479,
+			"name": "Login Home Environment",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "{\n\t\"UserName\":\"{{username}}\",\n\t\"Password\": \"{{password}}\",\n\t\"DeviceId\":\"12345\",\n\t\"IsAmPmUsed\":true,\n\t\"IetfTag\":\"en-US\",\n\t\"TimeZoneOffset\":\"-06:00\"\n}",
+			"folder": "20d7dae0-7bec-427e-ba73-33ba2ab60603"
+		},
+		{
 			"id": "a86c44fb-a9f6-ddc7-5e20-fc73fe004e4c",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
 			"url": "{{environment}}ReminderTemplates",
@@ -866,6 +1051,25 @@
 			"folder": "c30fa77a-ff0d-7431-1370-0f7d2f8d6929"
 		},
 		{
+			"id": "baffa71d-6345-5ef8-752b-a4526c26912c",
+			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v3/Reminders/{{reminder_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n    tests[data.id + \" Name matches\"] = jsonData.Data.Name === data.name;\n    tests[data.id + \" Description matches\"] = jsonData.Data.Description === data.description;\n    tests[data.id + \" Category matches\"] = jsonData.Data.ReminderTypeId === data.category;\n    tests[data.id + \" Timezone matches\"] = jsonData.Data.TimeZoneName === data.timezone;\n    tests[data.id + \" Remind me Minutes matches\"] = jsonData.Data.RemindMeMinutes.length !== 0;\n    tests[data.id + \" Due dates match\"] = jsonData.Data.DueDates.length !== 0;\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeSingle + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeSingle;\n    tests[data.id + \" Expected: \" + data.messageerrorSingle + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorSingle;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488485654600,
+			"name": "GET Reminder Single",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
+		},
+		{
 			"id": "bd5b9547-828e-c015-1bd2-5d72d409a445",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
 			"url": "{{environment}}ReminderTemplates/{{template_id}}",
@@ -895,15 +1099,14 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n    tests[data.id + \" Name matches\"] = jsonData.Data.Name === data.name;\n    tests[data.id + \" Description matches\"] = jsonData.Data.Description === data.description;\n    tests[data.id + \" Category matches\"] = jsonData.Data.ReminderTypeId === data.category;\n    tests[data.id + \" Timezone matches\"] = jsonData.Data.TimeZoneName === data.timezone;\n    tests[data.id + \" RecurrenceType matches\"] = jsonData.Data.RecurrenceType === data.recurrenceType;\n    tests[data.id + \" Remind me Minutes matches\"] = jsonData.Data.RemindMeMinutes.length !== 0;\n    tests[data.id + data.StartDate] = jsonData.Data.StartDate !== \"\" && jsonData.Data.StartDate === data.startDate;\n    tests[data.id + \" End date matches\"] = jsonData.Data.EndDate !== \"\" && jsonData.Data.EndDate === data.endDate;\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeRec + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeRec;\n    tests[data.id + \" Expected: \" + data.messageerrorRec + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorRec;\n}",
+			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(data.expected === true){\n    tests[data.id + \" Request status is 200 Ok\"] = responseCode.code === 200;\n    tests[data.id + \" Name matches\"] = jsonData.Data.Name === data.name;\n    tests[data.id + \" Description matches\"] = jsonData.Data.Description === data.description;\n    tests[data.id + \" Category matches\"] = jsonData.Data.ReminderTypeId === data.category;\n    tests[data.id + \" Timezone matches\"] = jsonData.Data.TimeZoneName === data.timezone;\n     tests[data.id + \" Frequency Type and Id Matches\"] = jsonData.Data.RecurrenceType === data.recurrenceType\n    tests[data.id + \" Remind me Minutes matches\"] = jsonData.Data.RemindMeMinutes.length !== 0;\n    tests[data.id + data.StartDate] = jsonData.Data.StartDate !== \"\" && jsonData.Data.StartDate === data.startDate;\n    tests[data.id + \" End date matches\"] = jsonData.Data.EndDate !== \"\" && jsonData.Data.EndDate === data.endDate;\n} else {\n    tests[data.id + \" Request status is 400 Bad Request\"] = responseCode.code === 400;\n    tests[data.id + \" Expected: \" + data.bodycodeRec + \" Actual: \" + jsonData.Code] = jsonData.Code == data.bodycodeRec;\n    tests[data.id + \" Expected: \" + data.messageerrorRec + \" Actual: \" + jsonData.Message] = jsonData.Message == data.messageerrorRec;\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487172535956,
+			"time": 1488494167522,
 			"name": "GET Reminder Recurrent",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}",
-			"folder": "fe7f1aa9-2587-d796-2fef-77d29dc3f5a1"
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
 		},
 		{
 			"id": "c8093d96-1ff2-bf35-9219-b9d05e97a521",
@@ -924,6 +1127,26 @@
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
 			"rawModeData": "{\r\n  \"RecurringReminderAllPatients\": \r\n  {\r\n\t\"Name\": \"ASSING TEMPLATE Recurring\",\r\n\t\"ReminderTypeId\":1,\r\n\t\"RecurrenceType\":\"M\",\r\n\t\"Description\": \"ASSING TEMPLATE Recurring\",\r\n\t\"TimeZoneName\": \"CST\",\r\n\t\"IsImportant\": \"false\",\r\n\t\"StartDate\": \"2017-03-25T14:00:00Z\",\r\n\t\"EndDate\": \"2017-04-30T14:00:00Z\",\r\n\t\"RemindMeMinutes\": [30],\r\n\t\"AlertTimes\": [\"14:00\"]\r\n  }\r\n}",
 			"folder": "c30fa77a-ff0d-7431-1370-0f7d2f8d6929"
+		},
+		{
+			"id": "c9983813-671c-a03c-90ff-1cc6cd56f397",
+			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v2/Patients/{{patientid}}/RecurringReminders/{{reminder_series}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "if(data.expected === true)\n{\n    tests[\"Status code is 204 Deleted\"] = responseCode.code === 204;\n}\nelse\n{\n    tests[\"Status code is 400 Bad Request\"] = responseCode.code === 400;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1487173546324,
+			"name": "Delete Recurring reminder",
+			"description": "",
+			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
+			"rawModeData": "",
+			"folder": "4070b4c4-a360-c394-2ea1-60f1509b6308"
 		},
 		{
 			"id": "cbe30359-a229-6f48-578d-bb9d40a812a0",

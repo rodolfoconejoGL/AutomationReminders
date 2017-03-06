@@ -855,16 +855,13 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First title ok\"] = jsonData.Data[0].Title == \"30 min before\";\ntests[\"Second title ok\"] = jsonData.Data[1].Title == \"1 hour before\";\ntests[\"Third title ok\"] = jsonData.Data[2].Title == \"2 hours before\";\ntests[\"Fourth title ok\"] = jsonData.Data[3].Title == \"24 hours before\";\ntests[\"Fifth title ok\"] = jsonData.Data[4].Title == \"2 days before\";\ntests[\"Sixth title ok\"] = jsonData.Data[5].Title == \"3 days before\";\n\ntests[\"First minutes ok\"] = jsonData.Data[0].Minutes == \"30\";\ntests[\"Second minutes ok\"] = jsonData.Data[1].Minutes == \"60\";\ntests[\"Third minutes ok\"] = jsonData.Data[2].Minutes == \"120\";\ntests[\"Fourth minutes ok\"] = jsonData.Data[3].Minutes == \"1440\";\ntests[\"Fifth minutes ok\"] = jsonData.Data[4].Minutes == \"2880\";\ntests[\"Sixth minutes ok\"] = jsonData.Data[5].Minutes == \"4320\";\n",
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First title ok\"] = jsonData.Data[0].Title == \"30 min before\";\ntests[\"Second title ok\"] = jsonData.Data[1].Title == \"1 hour before\";\ntests[\"Third title ok\"] = jsonData.Data[2].Title == \"2 hours before\";\ntests[\"Fourth title ok\"] = jsonData.Data[3].Title == \"24 hours before\";\ntests[\"Fifth title ok\"] = jsonData.Data[4].Title == \"2 days before\";\ntests[\"Sixth title ok\"] = jsonData.Data[5].Title == \"3 days before\";\n\ntests[\"First minutes ok\"] = jsonData.Data[0].Minutes == 30;\ntests[\"Second minutes ok\"] = jsonData.Data[1].Minutes == 60;\ntests[\"Third minutes ok\"] = jsonData.Data[2].Minutes == 120;\ntests[\"Fourth minutes ok\"] = jsonData.Data[3].Minutes == 1440;\ntests[\"Fifth minutes ok\"] = jsonData.Data[4].Minutes == 2880;\ntests[\"Sixth minutes ok\"] = jsonData.Data[5].Minutes == 4320;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488300226907,
+			"time": 1488841995041,
 			"name": "GET Remind Me Times",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"isFromCollection": true,
-			"collectionRequestId": "9b9069f8-62f0-b353-286b-00004132437d",
-			"folder": "fdc215f6-ebeb-5136-9503-7ba2dcff2eb9",
 			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{

@@ -82,7 +82,9 @@
 				"d4b01d78-414a-1af7-2c8d-71676ef2228c",
 				"205d5eb3-edf1-66e6-1db0-9d260cb84c5f",
 				"40331c98-433b-ea6b-a2e7-76eede9ed2ab",
-				"ede691a6-f192-2a8c-b1ad-5c6dda61bc1e"
+				"ede691a6-f192-2a8c-b1ad-5c6dda61bc1e",
+				"894804aa-0a6d-dcc3-c5c3-92a6aee6114a",
+				"5a826e58-05d5-519f-115e-58b151abcb2f"
 			],
 			"owner": "1378843",
 			"collectionId": "a428a441-4a74-1f64-7a65-0070a11a84d0"
@@ -242,11 +244,11 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488483460549,
+			"time": 1488550861902,
 			"name": "Create single reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 1,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"CST\",\n  \"RemindMeMinutes\": [30,60]\n}"
+			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\",\"2018-02-15T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 1,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"CST\",\n  \"RemindMeMinutes\": [30,60]\n}"
 		},
 		{
 			"id": "3831d647-e985-0e58-6b00-532524eaf827",
@@ -448,6 +450,25 @@
 			"folder": "16b1661a-1843-25d0-4e0a-913522f78fd1"
 		},
 		{
+			"id": "5a826e58-05d5-519f-115e-58b151abcb2f",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}Conversations/1/Messages?MessageId=10",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488840617208,
+			"name": "GET Messages By Conversation ID",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
+		},
+		{
 			"id": "6caafad5-e8f7-49fa-38ed-2040d768c952",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
 			"url": "{{environment}}v2/Reminders",
@@ -526,6 +547,25 @@
 			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
 			"folder": "f66c9e1e-3bbe-c2cf-f1c9-883c5a1a96d5",
 			"isFromCollection": true
+		},
+		{
+			"id": "894804aa-0a6d-dcc3-c5c3-92a6aee6114a",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}Conversations/1/Messages",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488819913865,
+			"name": "GET Messages By Conversation",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
 		},
 		{
 			"id": "8c8b7dc1-de2a-7740-fd23-7934921c0247",
@@ -719,7 +759,7 @@
 			"tests": "tests[\"Status code is 204 Deleted\"] = responseCode.code === 204;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488488663960,
+			"time": 1488553552754,
 			"name": "Delete Recurring reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
@@ -774,15 +814,14 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First title ok\"] = jsonData.Data[0].Title == \"30 min before\";\ntests[\"Second title ok\"] = jsonData.Data[1].Title == \"1 hour before\";\ntests[\"Third title ok\"] = jsonData.Data[2].Title == \"2 hours before\";\ntests[\"Fourth title ok\"] = jsonData.Data[3].Title == \"24 hours before\";\ntests[\"Fifth title ok\"] = jsonData.Data[4].Title == \"2 days before\";\ntests[\"Sixth title ok\"] = jsonData.Data[5].Title == \"3 days before\";\n\ntests[\"First minutes ok\"] = jsonData.Data[0].Minutes == \"30\";\ntests[\"Second minutes ok\"] = jsonData.Data[1].Minutes == \"60\";\ntests[\"Third minutes ok\"] = jsonData.Data[2].Minutes == \"120\";\ntests[\"Fourth minutes ok\"] = jsonData.Data[3].Minutes == \"1440\";\ntests[\"Fifth minutes ok\"] = jsonData.Data[4].Minutes == \"2880\";\ntests[\"Sixth minutes ok\"] = jsonData.Data[5].Minutes == \"4320\";\n",
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First title ok\"] = jsonData.Data[0].Title == \"30 min before\";\ntests[\"Second title ok\"] = jsonData.Data[1].Title == \"1 hour before\";\ntests[\"Third title ok\"] = jsonData.Data[2].Title == \"2 hours before\";\ntests[\"Fourth title ok\"] = jsonData.Data[3].Title == \"24 hours before\";\ntests[\"Fifth title ok\"] = jsonData.Data[4].Title == \"2 days before\";\ntests[\"Sixth title ok\"] = jsonData.Data[5].Title == \"3 days before\";\n\ntests[\"First minutes ok\"] = jsonData.Data[0].Minutes == 30;\ntests[\"Second minutes ok\"] = jsonData.Data[1].Minutes == 60;\ntests[\"Third minutes ok\"] = jsonData.Data[2].Minutes == 120;\ntests[\"Fourth minutes ok\"] = jsonData.Data[3].Minutes == 1440;\ntests[\"Fifth minutes ok\"] = jsonData.Data[4].Minutes == 2880;\ntests[\"Sixth minutes ok\"] = jsonData.Data[5].Minutes == 4320;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488300226907,
+			"time": 1488814885048,
 			"name": "GET Remind Me Times",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}",
-			"folder": "740736e6-6a69-5cb9-6b85-4d478ab4f51b"
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
 			"id": "ce5eed34-803d-f012-526d-0254d77ef761",
@@ -877,7 +916,7 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_series\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488488653161,
+			"time": 1488556772772,
 			"name": "Create Recurring reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
@@ -944,7 +983,7 @@
 		{
 			"id": "ede691a6-f192-2a8c-b1ad-5c6dda61bc1e",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
-			"url": "{{environment}}Conversations/1",
+			"url": "{{environment}}Conversations/121",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -954,12 +993,11 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488387482758,
-			"name": "HOME - GET Conversations - CSV",
+			"time": 1488818556984,
+			"name": "GET ALL Conversations",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}",
-			"folder": "4d4bccb9-c8cb-6795-8575-462fdb5466d2"
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
 		},
 		{
 			"id": "f22478a7-d5e4-ece4-b740-e933e180a968",

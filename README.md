@@ -1,5 +1,5 @@
 <snippet>
-  <content><![CDATA[
+  <content>
 #Services test for Enhaced Reminder
 Project for running manual and automated tests on all services created for Enhanced Reminders
 ## Installation

@@ -234,15 +234,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487571681519,
+			"time": 1489780692022,
 			"name": "Clinician Login ",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "fb2dcd1b-1b2f-b62a-8488-286c4cd976d4"
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "2633ef2a-ed26-c5ce-2c29-f432755c9be8",
@@ -476,15 +475,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\r\n/*\r\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\r\ntests[ClinicianAccessProviderId] = responseCode.code === 200;\r\n*/\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\r\n\r\nvar jsonData = JSON.parse(responseBody);\r\n\r\n\r\nfunction generateNumbers(min,max){\r\nreturn  Math.round(Math.random()*max) + min\r\n   \r\n}\r\n\r\nvar frequencyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"frequencyvalue\", frequencyval);\r\nvar typeyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"typeyvalue\", typeyval);\r\nvar nameval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"namevalue\", nameval+\"Name\");\r\nvar desval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"desvalue\", desval+\"Description\");\r\nvar hour=generateNumbers(1,23);\r\nvar minutes=generateNumbers(1,23);\r\npostman.setEnvironmentVariable(\"time\", hour+\":\"+minutes);\r\n",
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\r\ntests[ClinicianAccessProviderId] = responseCode.code === 200;\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\r\n\r\nvar jsonData = JSON.parse(responseBody);\r\n\r\n\r\nfunction generateNumbers(min,max){\r\nreturn  Math.round(Math.random()*max) + min\r\n   \r\n}\r\n\r\nvar frequencyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"frequencyvalue\", frequencyval);\r\nvar typeyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"typeyvalue\", typeyval);\r\nvar nameval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"namevalue\", nameval+\"Name\");\r\nvar desval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"desvalue\", desval+\"Description\");\r\nvar hour=generateNumbers(1,23);\r\nvar minutes=generateNumbers(1,23);\r\npostman.setEnvironmentVariable(\"time\", hour+\":\"+minutes);\r\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487574745957,
+			"time": 1489780818268,
 			"name": "Clinician Login",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "698c6eec-3b82-165a-7e14-28a2359effea"
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "4ef8df35-f2b1-af77-906b-654551758ae9",
@@ -515,16 +513,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487123557349,
+			"time": 1489780676600,
 			"name": "Clinician Login ",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "5dc9a3a6-5d15-ad62-8878-f1f60d637ccd",
-			"isFromCollection": true
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "58e07d88-d5ae-17df-513e-150155bcea18",
@@ -673,15 +669,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\r\n/*\r\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\r\ntests[ClinicianAccessProviderId] = responseCode.code === 200;\r\n*/\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\r\n\r\nvar jsonData = JSON.parse(responseBody);\r\n",
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\r\ntests[ClinicianAccessProviderId] = responseCode.code === 200;\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\r\n\r\nvar jsonData = JSON.parse(responseBody);\r\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487560376488,
+			"time": 1489780738427,
 			"name": "Clinician Login",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "d66a8bbf-ead1-9ed6-922f-fc9d382dcd6a"
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "76742df8-cb98-1d8c-5191-94fe0fd0fbf1",
@@ -873,16 +868,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487123557349,
+			"time": 1489780755676,
 			"name": "Clinician Login ",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "d4a19c29-4d55-94ed-2283-ec7bd83fc01d",
-			"isFromCollection": true
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "99e030c4-20f2-3972-8cb2-9eab051175e6",
@@ -1174,16 +1167,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487123557349,
+			"time": 1489780765564,
 			"name": "Clinician Login ",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "17b3219e-dafc-4ca9-1378-4d192f6056a4",
-			"isFromCollection": true
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "cf5748cc-ae3e-0114-d3d7-78968366fea5",
@@ -1194,15 +1185,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\r\n/*\r\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\r\ntests[ClinicianAccessProviderId] = responseCode.code === 200;\r\n*/\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\r\n\r\nvar jsonData = JSON.parse(responseBody);\r\n\r\nvar frequencyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"frequencyvalue\", frequencyval);\r\nvar typeyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"typeyvalue\", typeyval);\r\nvar nameval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"namevalue\", nameval+\"Name\");\r\nvar desval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"desvalue\", desval+\"Description\");\r\nvar hour=generateNumbers(1,23);\r\nvar minutes=generateNumbers(1,23);\r\npostman.setEnvironmentVariable(\"time\", hour+\":\"+minutes);\r\n",
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\r\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\r\ntests[ClinicianAccessProviderId] = responseCode.code === 200;\r\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\r\n\r\nvar jsonData = JSON.parse(responseBody);\r\n\r\nvar frequencyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"frequencyvalue\", frequencyval);\r\nvar typeyval=generateNumbers(1,6);\r\npostman.setEnvironmentVariable(\"typeyvalue\", typeyval);\r\nvar nameval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"namevalue\", nameval+\"Name\");\r\nvar desval=generateNumbers(1,100);\r\npostman.setEnvironmentVariable(\"desvalue\", desval+\"Description\");\r\nvar hour=generateNumbers(1,23);\r\nvar minutes=generateNumbers(1,23);\r\npostman.setEnvironmentVariable(\"time\", hour+\":\"+minutes);\r\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487573778051,
+			"time": 1489780798900,
 			"name": "Clinician Login",
 			"description": "",
 			"collectionId": "6bb9d670-4bf4-499b-b1cb-000e979cdf79",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "c30fa77a-ff0d-7431-1370-0f7d2f8d6929"
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "d1f81550-61cc-b158-6136-1732fcdfe078",

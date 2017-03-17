@@ -24,7 +24,8 @@
 				"9b3fa6d5-d10c-d7df-8393-fe55a7ecfa6f",
 				"a101fc6c-8353-ad3c-c80c-9ad4708a180e",
 				"cd1bf3aa-65d6-ff57-1c93-bf18ba5ac4d0",
-				"2c665487-1067-84d3-b73a-65c28677f868"
+				"2c665487-1067-84d3-b73a-65c28677f868",
+				"5ecdadeb-f72e-3be8-1e8b-a5b53a55fb17"
 			],
 			"owner": "1378843",
 			"collectionId": "31da7fc3-440a-1741-04f0-8b2cc18bff23"
@@ -83,11 +84,12 @@
 				"205d5eb3-edf1-66e6-1db0-9d260cb84c5f",
 				"40331c98-433b-ea6b-a2e7-76eede9ed2ab",
 				"ede691a6-f192-2a8c-b1ad-5c6dda61bc1e",
+				"48f9233d-5948-cf53-2f8d-3ae31d535119",
 				"894804aa-0a6d-dcc3-c5c3-92a6aee6114a",
 				"5a826e58-05d5-519f-115e-58b151abcb2f"
 			],
 			"owner": "1378843",
-			"collectionId": "a428a441-4a74-1f64-7a65-0070a11a84d0"
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926"
 		},
 		{
 			"id": "b41c15a4-0449-be72-0364-77f06462dfce",
@@ -101,7 +103,8 @@
 				"e283a198-df51-2f6a-7174-4f618ada1165",
 				"e50e48c5-916b-d9a8-a69a-f0b9816241e3",
 				"b348b68f-1ae1-d3bc-c969-77bce67523cd",
-				"42bbe3fb-a109-dc5c-8218-ce98c3b1e946"
+				"42bbe3fb-a109-dc5c-8218-ce98c3b1e946",
+				"e1f4ae2b-2e10-d241-3907-8037b52d42e2"
 			],
 			"owner": "1378843",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926"
@@ -124,12 +127,11 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487957980906,
+			"time": 1489771797948,
 			"name": "Create single reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"folder": "740736e6-6a69-5cb9-6b85-4d478ab4f51b",
-			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 1,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"CST\",\n  \"RemindMeMinutes\": [30,60]\n}"
+			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\",\"2018-02-15T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 5,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"CST\",\n  \"RemindMeMinutes\": [30,60,120,1440]\n}"
 		},
 		{
 			"id": "181587fa-71e3-fb71-a346-d66ff618a077",
@@ -180,16 +182,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
-			"helperAttributes": "{}",
-			"time": 1487123557349,
+			"helperAttributes": {},
+			"time": 1489780432565,
 			"name": "Clinician Login copy",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "4d4bccb9-c8cb-6795-8575-462fdb5466d2",
-			"isFromCollection": true
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "284a1b91-a5e4-7be3-67c4-4b46ff3601b1",
@@ -200,16 +200,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487123557349,
+			"time": 1489780404423,
 			"name": "Clinician Login",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "cb57b610-47dc-4d08-00f6-918de720bd18",
-			"isFromCollection": true
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "2c665487-1067-84d3-b73a-65c28677f868",
@@ -224,12 +222,11 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First id ok\"] = jsonData.Data[0].ReminderFrequencyId == 1;\ntests[\"Second id ok\"] = jsonData.Data[1].ReminderFrequencyId == 2;\ntests[\"Third id ok\"] = jsonData.Data[2].ReminderFrequencyId == 3;\ntests[\"Fourth id ok\"] = jsonData.Data[3].ReminderFrequencyId == 4;\ntests[\"Fifth id ok\"] = jsonData.Data[4].ReminderFrequencyId == 5;\ntests[\"Sixth id ok\"] = jsonData.Data[5].ReminderFrequencyId == 6;\n\ntests[\"First name ok\"] = jsonData.Data[0].Name == \"Daily\";\ntests[\"Second name ok\"] = jsonData.Data[1].Name == \"Every Other Day\";\ntests[\"Third name ok\"] = jsonData.Data[2].Name == \"Weekly\";\ntests[\"Fourth name ok\"] = jsonData.Data[3].Name == \"Bi-Weekly\";\ntests[\"Fifth name ok\"] = jsonData.Data[4].Name == \"Monthly\";\ntests[\"Sixth name ok\"] = jsonData.Data[5].Name == \"Single\";\n\ntests[\"First abbreviation ok\"] = jsonData.Data[0].Abbreviation == \"D\";\ntests[\"Second abbreviation ok\"] = jsonData.Data[1].Abbreviation == \"E\";\ntests[\"Third abbreviation ok\"] = jsonData.Data[2].Abbreviation == \"W\";\ntests[\"Fourth abbreviation ok\"] = jsonData.Data[3].Abbreviation == \"B\";\ntests[\"Fifth abbreviation ok\"] = jsonData.Data[4].Abbreviation == \"M\";\ntests[\"Sixth abbreviation ok\"] = jsonData.Data[5].Abbreviation == \"S\";",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488302825208,
+			"time": 1489435133603,
 			"name": "GET Frequency Ids",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}",
-			"folder": "740736e6-6a69-5cb9-6b85-4d478ab4f51b"
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
 			"id": "3578b3a3-93ef-1632-dde4-dda70d7e8bb9",
@@ -244,11 +241,11 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488550861902,
+			"time": 1488908525702,
 			"name": "Create single reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\",\"2018-02-15T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 1,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"CST\",\n  \"RemindMeMinutes\": [30,60]\n}"
+			"rawModeData": "{\n  \"PatientId\": {{patientid}},\n  \"DueDates\": [\"2018-02-14T20:30:00Z\",\"2018-02-15T20:30:00Z\"],\n  \"Name\": \"Services test\",\n  \"Description\": \"Services reminder\",\n  \"ReminderTypeId\": 5,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"CST\",\n  \"RemindMeMinutes\": [30,60,120,1440]\n}"
 		},
 		{
 			"id": "3831d647-e985-0e58-6b00-532524eaf827",
@@ -320,20 +317,19 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.AccessToken);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.AccessToken);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
-			"helperAttributes": "{}",
-			"time": 1487124243887,
+			"helperAttributes": {},
+			"time": 1489780494580,
 			"name": "ReAuth AccessToken (HOME ONLY) copy",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n\t\"AccessToken\": \"{{ClinicianAccessToken}}\",\n\t\"ReauthToken\": \"{{ClinicianAccessReauthToken}}\",\n\t\"DeviceId\": \"{{ClinicianDeviceId}}\",\n\t\"FacilityId\": \"1\"\n}",
-			"folder": "4d4bccb9-c8cb-6795-8575-462fdb5466d2"
+			"rawModeData": "{\n\t\"AccessToken\": \"{{ClinicianAccessToken}}\",\n\t\"ReauthToken\": \"{{ClinicianAccessReauthToken}}\",\n\t\"DeviceId\": \"{{ClinicianDeviceId}}\",\n\t\"FacilityId\": \"1\"\n}"
 		},
 		{
 			"id": "42bbe3fb-a109-dc5c-8218-ce98c3b1e946",
 			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
-			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=25&StartDate=2015-02-01T20:17:52Z",
+			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=25&StartDate=2015-02-01T20:17:52Z&EndDate=2018-12-01T20:17:52Z",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -343,8 +339,8 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488483957167,
-			"name": "GET ALL reminders",
+			"time": 1488914113180,
+			"name": "GET ALL reminders V2",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
 			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
@@ -368,6 +364,25 @@
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
 			"rawModeData": "{\n  \"SingleReminderAllPatients\": \n  {\n\t\"DueDates\": [\"2017-03-08T10:00:00Z\", \"2017-03-08T18:00:00Z\"],\n\t\"Name\": \"FROM TEMPLATE 2Times 2Alerts\",\n\t\"Description\": \"FROM TEMPLATE 2Times 2Alerts\",\n\t\"ReminderTypeId\": 1,\n\t\"IsImportant\": false,\n\t\"TimeZoneName\": \"CST\",\n\t\"RemindMeMinutes\": [30, 60]\n  }\n}\n",
 			"folder": "cb57b610-47dc-4d08-00f6-918de720bd18"
+		},
+		{
+			"id": "48f9233d-5948-cf53-2f8d-3ae31d535119",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}/Patients/101/Conversations",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489071338641,
+			"name": "GET Conversations by Patient",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
 		},
 		{
 			"id": "4d9546e3-d74e-1179-d499-0d78339f506d",
@@ -439,15 +454,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487123557349,
+			"time": 1489780389142,
 			"name": "Clinician Login",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "16b1661a-1843-25d0-4e0a-913522f78fd1"
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "5a826e58-05d5-519f-115e-58b151abcb2f",
@@ -467,6 +481,25 @@
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
 			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
+		},
+		{
+			"id": "5ecdadeb-f72e-3be8-1e8b-a5b53a55fb17",
+			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v3/Reminders/ReminderFrequencies",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\n\ntests[\"First id ok\"] = jsonData.Data.ReminderFrequencies[0].ReminderFrequencyId == 1;\ntests[\"Second id ok\"] = jsonData.Data.ReminderFrequencies[1].ReminderFrequencyId == 2;\ntests[\"Third id ok\"] = jsonData.Data.ReminderFrequencies[2].ReminderFrequencyId == 3;\ntests[\"Fourth id ok\"] = jsonData.Data.ReminderFrequencies[3].ReminderFrequencyId == 4;\ntests[\"Fifth id ok\"] = jsonData.Data.ReminderFrequencies[4].ReminderFrequencyId == 5;\n\ntests[\"First name ok\"] = jsonData.Data.ReminderFrequencies[0].Name == \"Daily\";\ntests[\"Second name ok\"] = jsonData.Data.ReminderFrequencies[1].Name == \"Every Other Day\";\ntests[\"Third name ok\"] = jsonData.Data.ReminderFrequencies[2].Name == \"Weekly\";\ntests[\"Fourth name ok\"] = jsonData.Data.ReminderFrequencies[3].Name == \"Bi-Weekly\";\ntests[\"Fifth name ok\"] = jsonData.Data.ReminderFrequencies[4].Name == \"Monthly\";\n\ntests[\"First abbreviation ok\"] = jsonData.Data.ReminderFrequencies[0].Abbreviation == \"D\";\ntests[\"Second abbreviation ok\"] = jsonData.Data.ReminderFrequencies[1].Abbreviation == \"E\";\ntests[\"Third abbreviation ok\"] = jsonData.Data.ReminderFrequencies[2].Abbreviation == \"W\";\ntests[\"Fourth abbreviation ok\"] = jsonData.Data.ReminderFrequencies[3].Abbreviation == \"B\";\ntests[\"Fifth abbreviation ok\"] = jsonData.Data.ReminderFrequencies[4].Abbreviation == \"M\";",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489446204433,
+			"name": "GET Frequency Ids v3",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
 			"id": "6caafad5-e8f7-49fa-38ed-2040d768c952",
@@ -537,16 +570,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\n",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487574674463,
+			"time": 1489780358967,
 			"name": "Clinician Login",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}",
-			"folder": "f66c9e1e-3bbe-c2cf-f1c9-883c5a1a96d5",
-			"isFromCollection": true
+			"rawModeData": "{\n\t\"UserName\": \"{{ClinicianUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "894804aa-0a6d-dcc3-c5c3-92a6aee6114a",
@@ -610,7 +641,7 @@
 		{
 			"id": "949af961-8467-ef42-e09d-e2ac5ce2aacc",
 			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
-			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders/{reminder_id}}",
+			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders/{{reminder_id}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
@@ -620,7 +651,7 @@
 			"tests": "tests[\"Status code is 204 Deleted\"] = responseCode.code === 204;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488490221420,
+			"time": 1488905680402,
 			"name": "DELETE Single Reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
@@ -759,7 +790,7 @@
 			"tests": "tests[\"Status code is 204 Deleted\"] = responseCode.code === 204;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488553552754,
+			"time": 1488907700669,
 			"name": "Delete Recurring reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
@@ -794,15 +825,14 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.AccessToken);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.AccessToken);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487124243887,
+			"time": 1489780394941,
 			"name": "ReAuth AccessToken (HOME ONLY)",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n\t\"AccessToken\": \"{{ClinicianAccessToken}}\",\n\t\"ReauthToken\": \"{{ClinicianAccessReauthToken}}\",\n\t\"DeviceId\": \"{{ClinicianDeviceId}}\",\n\t\"FacilityId\": \"1\"\n}",
-			"folder": "16b1661a-1843-25d0-4e0a-913522f78fd1"
+			"rawModeData": "{\n\t\"AccessToken\": \"{{ClinicianAccessToken}}\",\n\t\"ReauthToken\": \"{{ClinicianAccessReauthToken}}\",\n\t\"DeviceId\": \"{{ClinicianDeviceId}}\",\n\t\"FacilityId\": \"1\"\n}"
 		},
 		{
 			"id": "cd1bf3aa-65d6-ff57-1c93-bf18ba5ac4d0",
@@ -826,7 +856,7 @@
 		{
 			"id": "ce5eed34-803d-f012-526d-0254d77ef761",
 			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
-			"url": "{{environment}}v3/Reminders/{{reminder_id}}",
+			"url": "{{environment}}v3/Reminders/313141",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -836,7 +866,7 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488483953472,
+			"time": 1489778980876,
 			"name": "GET Reminder Single",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
@@ -866,7 +896,7 @@
 		{
 			"id": "d6f5ce54-afd5-3ac4-b805-67ff05e45eaa",
 			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
-			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=2500&StartDate=2015-02-01T20:17:52Z",
+			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=250&StartDate=2015-02-01T20:17:52Z",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -876,7 +906,7 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488486354089,
+			"time": 1489779337711,
 			"name": "GET ALL reminders",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
@@ -904,6 +934,25 @@
 			"isFromCollection": true
 		},
 		{
+			"id": "e1f4ae2b-2e10-d241-3907-8037b52d42e2",
+			"headers": "Content-Type: application/json\nAccessToken: {{token}}\n",
+			"url": "{{environment}}v3/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=300&StartDate=2015-02-01T20:17:52Z&EndDate=2018-12-01T20:17:52Z",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489778982669,
+			"name": "GET ALL reminders V3",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
+		},
+		{
 			"id": "e283a198-df51-2f6a-7174-4f618ada1165",
 			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: 2.0.0\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
 			"url": "{{environment}}v3/Reminders/RecurringReminders",
@@ -916,11 +965,11 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_series\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488556772772,
+			"time": 1489008055024,
 			"name": "Create Recurring reminder",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n   \"PatientId\": {{patientid}},\n   \"Name\": \"Services Test\",\n   \"ReminderTypeId\":1,\n   \"ReminderFrequencyId\":1,\n   \"Description\": \"Daily test\",\n   \"TimeZoneName\": \"CST\",\n   \"IsImportant\": \"false\",\n   \"StartDate\": \"2018-03-30T14:00:00Z\",\n   \"EndDate\": \"2018-04-30T14:00:00Z\",\n   \"RemindMeMinutes\": [30],\n   \"AlertTimes\": [\"14:00\"]\n}"
+			"rawModeData": "{\n   \"PatientId\": {{patientid}},\n   \"Name\": \"Services Test\",\n   \"ReminderTypeId\":1,\n   \"ReminderFrequencyId\":1,\n   \"Description\": \"Daily test\",\n   \"TimeZoneName\": \"CST\",\n   \"IsImportant\": \"false\",\n   \"StartDate\": \"2018-03-30T14:00:00Z\",\n   \"EndDate\": \"2018-04-30T14:00:00Z\",\n   \"RemindMeMinutes\": [30,60,120,1440],\n   \"AlertTimes\": [\"14:00\",\"15:00\",\"16:00\"]\n}"
 		},
 		{
 			"id": "e50e48c5-916b-d9a8-a69a-f0b9816241e3",
@@ -935,7 +984,7 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488395932076,
+			"time": 1489008132965,
 			"name": "GET Reminder Recurrent",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
@@ -970,14 +1019,13 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.AccessToken);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.AccessToken);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1487124243887,
+			"time": 1489780377678,
 			"name": "ReAuth AccessToken (HOME ONLY)",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"folder": "f66c9e1e-3bbe-c2cf-f1c9-883c5a1a96d5",
 			"rawModeData": "{\n\t\"AccessToken\": \"{{ClinicianAccessToken}}\",\n\t\"ReauthToken\": \"{{ClinicianAccessReauthToken}}\",\n\t\"DeviceId\": \"{{ClinicianDeviceId}}\",\n\t\"FacilityId\": \"1\"\n}"
 		},
 		{

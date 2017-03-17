@@ -1,24 +1,15 @@
 <snippet>
-  <content><![CDATA[
-# ${1:Postman automation}
-TODO: Project for running manual and automated test cases for PE
+  <content>
+#Services test for Enhaced Reminder
+Project for running manual and automated tests on all services created for Enhanced Reminders
 ## Installation
-TODO: We will add the steps for import the postman files
+1. Download the source located in this repository.
+2. First import your environment varialbes
+   a. From within Postman click on Manage Environments -> Import -> Select Home/VillageHealth/India environment.postmancollection.
+3. Next import the automated and manual collection. Import button -> Import File -> Manual and Automated testing.postmanCollection.
 ## Usage
-TODO: We will add the steps for install the postman files
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-## History
-This project was created for save  testing time for new  & old endpoints
-## Credits
-Rodolfo Conejo
-Pablo Meseguer
-## License
-DAVITA
-]]></content>
-  <tabTrigger>readme</tabTrigger>
+Manual Tests:
+1. To run the manual test just make sure to run the login service call before the service under test.
+2. To run the automated tests, use the postman collection runner.
+</content>
 </snippet>

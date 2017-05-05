@@ -161,6 +161,7 @@
 				"b4c35f96-ccfd-2df8-f8dd-5869d632d5d5",
 				"c3a48ea5-e051-07bd-7a46-f8c8af03ba3e",
 				"d15dcc82-887e-a23b-e915-4fd187d48f01",
+				"a849b204-e40c-372d-3781-32fb0cfa9d86",
 				"fd3c5eff-00cb-bf6e-4ea2-9b9667963471"
 			],
 			"owner": "1378843"
@@ -697,16 +698,13 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"waitingRoomId}\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
+			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"waitingRoomId\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1493845539706,
+			"time": 1494017997881,
 			"name": "Create Waiting Room",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"isFromCollection": true,
-			"collectionRequestId": "f538bca7-99f8-509a-e01f-a58fb753b247",
-			"folder": "b553941f-41e0-8158-b899-d7335282fbd4",
 			"rawModeData": "{\n  \"Name\": \"Waiting room 1\",\n  \"Description\": \"Waiting room description 1\"\n}"
 		},
 		{
@@ -1209,6 +1207,25 @@
 			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
+			"id": "a849b204-e40c-372d-3781-32fb0cfa9d86",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}WaitingRooms/{{patient_room_id}}/Patients",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PATCH",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494017890683,
+			"name": "Patient Leave Video Chat",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\n  \"ChatAction\": \"LeaveChat\"\n}"
+		},
+		{
 			"id": "b348b68f-1ae1-d3bc-c969-77bce67523cd",
 			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
 			"url": "{{environment}}v2/Patients/{{patientid}}/RecurringReminders/21002",
@@ -1386,21 +1403,21 @@
 		{
 			"id": "c3a48ea5-e051-07bd-7a46-f8c8af03ba3e",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
-			"url": "{{environment}}WaitingRooms/1/Patients",
+			"url": "{{environment}}WaitingRooms/{{waitingRoomId}}/Patients",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
+			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"patient_room_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1493996711824,
+			"time": 1494017944858,
 			"name": "Patient Enter Waiting room by Id",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n   \"PrimaryCarePhysician\": \"Bill Thomas\",\n   \"PatientId\": 3\n}"
+			"rawModeData": "{\n   \"PrimaryCarePhysician\": \"Bill Thomas\",\n   \"PatientId\": {{patientid}}\n}"
 		},
 		{
 			"id": "c94a8881-aff6-38d1-9660-891081f8847b",
@@ -1481,7 +1498,7 @@
 		{
 			"id": "d15dcc82-887e-a23b-e915-4fd187d48f01",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
-			"url": "{{environment}}WaitingRooms/{{patientid}}/Patients",
+			"url": "{{environment}}WaitingRooms/{{patient_room_id}}/Patients",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "PATCH",
@@ -1491,12 +1508,11 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 204;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1493845796025,
-			"name": "Patient Leave Waiting room by Id",
+			"time": 1494017892443,
+			"name": "Patient Enter Video Chat",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"folder": "b553941f-41e0-8158-b899-d7335282fbd4",
-			"rawModeData": ""
+			"rawModeData": "{\n  \"ChatAction\": \"JoinChat\"\n}"
 		},
 		{
 			"id": "d4b01d78-414a-1af7-2c8d-71676ef2228c",
@@ -1888,7 +1904,7 @@
 		{
 			"id": "fd3c5eff-00cb-bf6e-4ea2-9b9667963471",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
-			"url": "{{environment}}WaitingRooms/{waitingRoomId}/Patients",
+			"url": "{{environment}}WaitingRooms/{{waitingRoomId}}/Patients",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -1898,7 +1914,7 @@
 			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1494003546341,
+			"time": 1494018046072,
 			"name": "GET Historical Calls by Room Id",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",

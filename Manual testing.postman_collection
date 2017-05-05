@@ -38,6 +38,7 @@
 			"description": "",
 			"order": [
 				"59a89dc5-a048-a9b5-1f95-84f48380e291",
+				"664976c2-d30b-4bcc-ca66-fd21dda7bfe7",
 				"c0be5d87-34ee-e9b3-f020-133dbe0edc3c",
 				"08f00b02-27cc-27ce-6870-d3e734cb151a",
 				"423f8141-becf-d13d-0368-10f329ab54ce",
@@ -56,7 +57,9 @@
 				"ba00e115-a49d-16f4-4dd6-d7e7414db845",
 				"6b909d00-838d-e009-a250-f960466bf4d9",
 				"ece0d5c3-07fb-ca63-cc38-92dffc8f2814",
-				"f3aedc0b-f201-39e5-927d-5dad88ba72a0"
+				"f3aedc0b-f201-39e5-927d-5dad88ba72a0",
+				"a6d600bb-52ff-5b01-251c-7bf6e846d296",
+				"4525690e-e01e-a09d-65c4-2b6cbe39689e"
 			],
 			"owner": "1378843",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926"
@@ -157,7 +160,8 @@
 				"5643d4ef-e9ef-dcad-7195-0fe3c3352793",
 				"b4c35f96-ccfd-2df8-f8dd-5869d632d5d5",
 				"c3a48ea5-e051-07bd-7a46-f8c8af03ba3e",
-				"d15dcc82-887e-a23b-e915-4fd187d48f01"
+				"d15dcc82-887e-a23b-e915-4fd187d48f01",
+				"fd3c5eff-00cb-bf6e-4ea2-9b9667963471"
 			],
 			"owner": "1378843"
 		}
@@ -588,6 +592,25 @@
 			"rawModeData": "{\n  \"SingleReminderAllPatients\": \n  {\n\t\"DueDates\": [\"2017-03-08T10:00:00Z\", \"2017-03-08T18:00:00Z\"],\n\t\"Name\": \"FROM TEMPLATE 2Times 2Alerts\",\n\t\"Description\": \"FROM TEMPLATE 2Times 2Alerts\",\n\t\"ReminderTypeId\": 1,\n\t\"IsImportant\": false,\n\t\"TimeZoneName\": \"CST\",\n\t\"RemindMeMinutes\": [30, 60]\n  }\n}\n"
 		},
 		{
+			"id": "4525690e-e01e-a09d-65c4-2b6cbe39689e",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}Patients/{{patientid}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar variable = postman.getEnvironmentVariable(\"environment\")\n\nvar jsonData = JSON.parse(responseBody);\n\nif(variable.includes(\"india\"))\n{\n    tests[\"First timezoneId ok\"] = jsonData.Data.TimeZones[0].TimesZoneId == 1;\n    tests[\"Second timezoneId ok\"] = jsonData.Data.TimeZones[1].TimesZoneId == 2; \n    tests[\"Thrid timezoneId ok\"] = jsonData.Data.TimeZones[2].TimesZoneId == 3; \n    tests[\"Fourth timezoneId ok\"] = jsonData.Data.TimeZones[3].TimesZoneId == 4; \n    tests[\"Fifth timezoneId ok\"] = jsonData.Data.TimeZones[4].TimesZoneId == 5; \n    \n    tests[\"First abbreviation ok\"] = jsonData.Data.TimeZones[0].Abbreviation == \"AST\";\n    tests[\"Second abbreviation ok\"] = jsonData.Data.TimeZones[1].Abbreviation == \"PKST\"; \n    tests[\"Thrid abbreviation ok\"] = jsonData.Data.TimeZones[2].Abbreviation == \"IST\"; \n    tests[\"Fourth abbreviation ok\"] = jsonData.Data.TimeZones[3].Abbreviation == \"KST\"; \n    tests[\"Fifth abbreviation ok\"] = jsonData.Data.TimeZones[4].Abbreviation == \"CHST\";\n    \n    tests[\"First name ok\"] = jsonData.Data.TimeZones[0].Name == \"Afghanistan\";\n    tests[\"Second name ok\"] = jsonData.Data.TimeZones[1].Name == \"Pakistan\"; \n    tests[\"Thrid name ok\"] = jsonData.Data.TimeZones[2].Name == \"India\"; \n    tests[\"Fourth name ok\"] = jsonData.Data.TimeZones[3].Name == \"Kyrgyzstan\"; \n    tests[\"Fifth name ok\"] = jsonData.Data.TimeZones[4].Name == \"China\";\n}\nelse\n{\n    tests[\"First timezoneId ok\"] = jsonData.Data.TimeZones[0].TimesZoneId == 1;\n    tests[\"Second timezoneId ok\"] = jsonData.Data.TimeZones[1].TimesZoneId == 2; \n    tests[\"Thrid timezoneId ok\"] = jsonData.Data.TimeZones[2].TimesZoneId == 3; \n    tests[\"Fourth timezoneId ok\"] = jsonData.Data.TimeZones[3].TimesZoneId == 4; \n    tests[\"Fifth timezoneId ok\"] = jsonData.Data.TimeZones[4].TimesZoneId == 5; \n    tests[\"Sixth timezoneId ok\"] = jsonData.Data.TimeZones[5].TimesZoneId == 6; \n    tests[\"Seventh timezoneId ok\"] = jsonData.Data.TimeZones[6].TimesZoneId == 7; \n    tests[\"Eigth timezoneId ok\"] = jsonData.Data.TimeZones[7].TimesZoneId == 8; \n    tests[\"Ninth timezoneId ok\"] = jsonData.Data.TimeZones[8].TimesZoneId == 9; \n    tests[\"Tenth timezoneId ok\"] = jsonData.Data.TimeZones[9].TimesZoneId == 10;\n    \n    tests[\"First abbreviation ok\"] = jsonData.Data.TimeZones[0].Abbreviation == \"EST\";\n    tests[\"Second abbreviation ok\"] = jsonData.Data.TimeZones[1].Abbreviation == \"EST-NO\"; \n    tests[\"Thrid abbreviation ok\"] = jsonData.Data.TimeZones[2].Abbreviation == \"CST\"; \n    tests[\"Fourth abbreviation ok\"] = jsonData.Data.TimeZones[3].Abbreviation == \"CST-NO\"; \n    tests[\"Fifth abbreviation ok\"] = jsonData.Data.TimeZones[4].Abbreviation == \"MST\"; \n    tests[\"Sixth abbreviation ok\"] = jsonData.Data.TimeZones[5].Abbreviation == \"MST-NO\"; \n    tests[\"Seventh abbreviation ok\"] = jsonData.Data.TimeZones[6].Abbreviation == \"PST\"; \n    tests[\"Eigth abbreviation ok\"] = jsonData.Data.TimeZones[7].Abbreviation == \"PST-NO\"; \n    tests[\"Ninth abbreviation ok\"] = jsonData.Data.TimeZones[8].Abbreviation == \"AKST-NO\"; \n    tests[\"Tenth abbreviation ok\"] = jsonData.Data.TimeZones[9].Abbreviation == \"HAST-NO\";\n    \n    tests[\"First name ok\"] = jsonData.Data.TimeZones[0].Name == \"Eastern\";\n    tests[\"Second name ok\"] = jsonData.Data.TimeZones[1].Name == \"Eastern (No DST)\"; \n    tests[\"Thrid name ok\"] = jsonData.Data.TimeZones[2].Name == \"Central\"; \n    tests[\"Fourth name ok\"] = jsonData.Data.TimeZones[3].Name == \"Central (No DST)\"; \n    tests[\"Fifth name ok\"] = jsonData.Data.TimeZones[4].Name == \"Mountain\"; \n    tests[\"Sixth name ok\"] = jsonData.Data.TimeZones[5].Name == \"Mountain (No DST)\"; \n    tests[\"Seventh name ok\"] = jsonData.Data.TimeZones[6].Name == \"Pacific\"; \n    tests[\"Eigth name ok\"] = jsonData.Data.TimeZones[7].Name == \"Pacific (No DST)\"; \n    tests[\"Ninth name ok\"] = jsonData.Data.TimeZones[8].Name == \"Alaska (No DST)\"; \n    tests[\"Tenth name ok\"] = jsonData.Data.TimeZones[9].Name == \"Hawaii (No DST)\"; \n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494004107916,
+			"name": "GET Patient Info",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
+		},
+		{
 			"id": "47e85288-0cbd-6aa6-c8a3-38099ab34e26",
 			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
 			"url": "{{environment}}v2/Patients/{{patientid}}/Reminders?Sort=asc&Offset=0&Limit=25&StartDate=2017-02-01T20:17:52Z&IsCompleted=false",
@@ -744,6 +767,24 @@
 			"isFromCollection": true,
 			"collectionRequestId": "60fd4a9b-a683-6cf8-7db0-e9fe2371448b",
 			"rawModeData": "{\n\t\"AccessToken\": \"{{ClinicianAccessToken}}\",\n\t\"ReauthToken\": \"{{ClinicianAccessReauthToken}}\",\n\t\"DeviceId\": \"1485994957kuelfv\",\n\t\"FacilityId\": \"1\"\n}"
+		},
+		{
+			"id": "664976c2-d30b-4bcc-ca66-fd21dda7bfe7",
+			"headers": "Content-Type: application/json\n",
+			"url": "{{environment}}Accounts/InsuranceCounselorLogin",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"ClinicianAccessToken\", jsonData.Data.TokenDetails.AccessToken);\npostman.setEnvironmentVariable(\"ClinicianAccessReauthToken\", jsonData.Data.TokenDetails.ReauthToken);\npostman.setEnvironmentVariable(\"ClinicianAccessProviderId\", jsonData.Data.TokenDetails.ProviderId);\n\ntests[\"Status code is 200 Able to log in\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494003698529,
+			"name": "Insurance Counselor Login",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\n\t\"UserName\": \"{{InsuranceUsername}}\", \n\t\"Password\": \"{{ClinicianPassword}}\", \n\t\"DeviceId\": \"{{ClinicianDeviceId}}\"\n}"
 		},
 		{
 			"id": "6b909d00-838d-e009-a250-f960466bf4d9",
@@ -1149,6 +1190,25 @@
 			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
 		},
 		{
+			"id": "a6d600bb-52ff-5b01-251c-7bf6e846d296",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}Patients",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;\n\nvar variable = postman.getEnvironmentVariable(\"environment\")\n\nvar jsonData = JSON.parse(responseBody);\n\nif(variable.includes(\"india\"))\n{\n    tests[\"First timezoneId ok\"] = jsonData.Data.TimeZones[0].TimesZoneId == 1;\n    tests[\"Second timezoneId ok\"] = jsonData.Data.TimeZones[1].TimesZoneId == 2; \n    tests[\"Thrid timezoneId ok\"] = jsonData.Data.TimeZones[2].TimesZoneId == 3; \n    tests[\"Fourth timezoneId ok\"] = jsonData.Data.TimeZones[3].TimesZoneId == 4; \n    tests[\"Fifth timezoneId ok\"] = jsonData.Data.TimeZones[4].TimesZoneId == 5; \n    \n    tests[\"First abbreviation ok\"] = jsonData.Data.TimeZones[0].Abbreviation == \"AST\";\n    tests[\"Second abbreviation ok\"] = jsonData.Data.TimeZones[1].Abbreviation == \"PKST\"; \n    tests[\"Thrid abbreviation ok\"] = jsonData.Data.TimeZones[2].Abbreviation == \"IST\"; \n    tests[\"Fourth abbreviation ok\"] = jsonData.Data.TimeZones[3].Abbreviation == \"KST\"; \n    tests[\"Fifth abbreviation ok\"] = jsonData.Data.TimeZones[4].Abbreviation == \"CHST\";\n    \n    tests[\"First name ok\"] = jsonData.Data.TimeZones[0].Name == \"Afghanistan\";\n    tests[\"Second name ok\"] = jsonData.Data.TimeZones[1].Name == \"Pakistan\"; \n    tests[\"Thrid name ok\"] = jsonData.Data.TimeZones[2].Name == \"India\"; \n    tests[\"Fourth name ok\"] = jsonData.Data.TimeZones[3].Name == \"Kyrgyzstan\"; \n    tests[\"Fifth name ok\"] = jsonData.Data.TimeZones[4].Name == \"China\";\n}\nelse\n{\n    tests[\"First timezoneId ok\"] = jsonData.Data.TimeZones[0].TimesZoneId == 1;\n    tests[\"Second timezoneId ok\"] = jsonData.Data.TimeZones[1].TimesZoneId == 2; \n    tests[\"Thrid timezoneId ok\"] = jsonData.Data.TimeZones[2].TimesZoneId == 3; \n    tests[\"Fourth timezoneId ok\"] = jsonData.Data.TimeZones[3].TimesZoneId == 4; \n    tests[\"Fifth timezoneId ok\"] = jsonData.Data.TimeZones[4].TimesZoneId == 5; \n    tests[\"Sixth timezoneId ok\"] = jsonData.Data.TimeZones[5].TimesZoneId == 6; \n    tests[\"Seventh timezoneId ok\"] = jsonData.Data.TimeZones[6].TimesZoneId == 7; \n    tests[\"Eigth timezoneId ok\"] = jsonData.Data.TimeZones[7].TimesZoneId == 8; \n    tests[\"Ninth timezoneId ok\"] = jsonData.Data.TimeZones[8].TimesZoneId == 9; \n    tests[\"Tenth timezoneId ok\"] = jsonData.Data.TimeZones[9].TimesZoneId == 10;\n    \n    tests[\"First abbreviation ok\"] = jsonData.Data.TimeZones[0].Abbreviation == \"EST\";\n    tests[\"Second abbreviation ok\"] = jsonData.Data.TimeZones[1].Abbreviation == \"EST-NO\"; \n    tests[\"Thrid abbreviation ok\"] = jsonData.Data.TimeZones[2].Abbreviation == \"CST\"; \n    tests[\"Fourth abbreviation ok\"] = jsonData.Data.TimeZones[3].Abbreviation == \"CST-NO\"; \n    tests[\"Fifth abbreviation ok\"] = jsonData.Data.TimeZones[4].Abbreviation == \"MST\"; \n    tests[\"Sixth abbreviation ok\"] = jsonData.Data.TimeZones[5].Abbreviation == \"MST-NO\"; \n    tests[\"Seventh abbreviation ok\"] = jsonData.Data.TimeZones[6].Abbreviation == \"PST\"; \n    tests[\"Eigth abbreviation ok\"] = jsonData.Data.TimeZones[7].Abbreviation == \"PST-NO\"; \n    tests[\"Ninth abbreviation ok\"] = jsonData.Data.TimeZones[8].Abbreviation == \"AKST-NO\"; \n    tests[\"Tenth abbreviation ok\"] = jsonData.Data.TimeZones[9].Abbreviation == \"HAST-NO\";\n    \n    tests[\"First name ok\"] = jsonData.Data.TimeZones[0].Name == \"Eastern\";\n    tests[\"Second name ok\"] = jsonData.Data.TimeZones[1].Name == \"Eastern (No DST)\"; \n    tests[\"Thrid name ok\"] = jsonData.Data.TimeZones[2].Name == \"Central\"; \n    tests[\"Fourth name ok\"] = jsonData.Data.TimeZones[3].Name == \"Central (No DST)\"; \n    tests[\"Fifth name ok\"] = jsonData.Data.TimeZones[4].Name == \"Mountain\"; \n    tests[\"Sixth name ok\"] = jsonData.Data.TimeZones[5].Name == \"Mountain (No DST)\"; \n    tests[\"Seventh name ok\"] = jsonData.Data.TimeZones[6].Name == \"Pacific\"; \n    tests[\"Eigth name ok\"] = jsonData.Data.TimeZones[7].Name == \"Pacific (No DST)\"; \n    tests[\"Ninth name ok\"] = jsonData.Data.TimeZones[8].Name == \"Alaska (No DST)\"; \n    tests[\"Tenth name ok\"] = jsonData.Data.TimeZones[9].Name == \"Hawaii (No DST)\"; \n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494003552025,
+			"name": "GET Patients",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\n  \"IsClinicianCreated\": true,\n  \"PatientId\": 121,\n  \"DueDates\": [\"2016-12-29T05:00:00Z\",\"2016-12-29T14:00:00Z\",\"2016-12-29T20:00:00Z\"],\n  \"Name\": \"Doctors appointment\",\n  \"Description\": \"Rolo test description\",\n  \"ReminderTypeId\": 3,\n  \"IsImportant\": true,\n  \"TimeZoneName\": \"UTC\",\n  \"RemindMeMinutes\": [30,60,120,1440,2880,4320],\n  \"ResourceId\": 3622\n}"
+		},
+		{
 			"id": "b348b68f-1ae1-d3bc-c969-77bce67523cd",
 			"headers": "Accept-Encoding: gzip, deflate\nAccept: application/json\nContent-Type: application/json\nX-platform: iOS\nX-app_id: com.VillageHealth.PatientEngagement.uat\nX-app_version: {{version}}\nX-os_version: 8.3.3\nConnection: Keep-Alive\nAccessToken: {{token}}\n",
 			"url": "{{environment}}v2/Patients/{{patientid}}/RecurringReminders/21002",
@@ -1336,11 +1396,11 @@
 			"tests": "var Location = responseHeaders.Location.split(\"/\");\npostman.setEnvironmentVariable(\"reminder_id\", Location[Location.length-1]);\ntests[\"Status code is 201 Created\"] = responseCode.code === 201;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1493849521911,
+			"time": 1493996711824,
 			"name": "Patient Enter Waiting room by Id",
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
-			"rawModeData": "{\n   \"PrimaryCarePhysician\": \"Bill Thomas\",\n   \"PatientId\": {{patientid}}\n}"
+			"rawModeData": "{\n   \"PrimaryCarePhysician\": \"Bill Thomas\",\n   \"PatientId\": 3\n}"
 		},
 		{
 			"id": "c94a8881-aff6-38d1-9660-891081f8847b",
@@ -1824,6 +1884,25 @@
 			"description": "",
 			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
 			"rawModeData": "{\n  \"UserName\": \"{{username}}\",\n  \"Password\": \"{{password}}\",\n  \"DeviceId\":\"6\"\n}"
+		},
+		{
+			"id": "fd3c5eff-00cb-bf6e-4ea2-9b9667963471",
+			"headers": "Content-Type: application/json\nAccessToken: {{ClinicianAccessToken}}\n",
+			"url": "{{environment}}WaitingRooms/{waitingRoomId}/Patients",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 Ok\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494003546341,
+			"name": "GET Historical Calls by Room Id",
+			"description": "",
+			"collectionId": "4257b51f-b273-3d57-397a-13616e7dd926",
+			"rawModeData": "{\"UserName\":\"justin.tubbs\",\"Password\": \"tester123\",\"DeviceId\":\"12345\",\"IsAmPmUsed\":true,\"IetfTag\":\"en-US\",\"TimeZoneOffset\":\"-06:00\"}"
 		}
 	]
 }
